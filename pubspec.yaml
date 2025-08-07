@@ -54,6 +54,7 @@ dev_dependencies:
   json_serializable: ^6.8.0
 
   flutter_lints: ^4.0.0
+  pretty_dio_logger: ^1.4.0
 
 flutter:
 
