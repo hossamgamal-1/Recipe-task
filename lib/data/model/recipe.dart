@@ -4,11 +4,13 @@ part 'recipe.g.dart';
 
 @JsonSerializable()
 class Recipe {
-  bool success;
-  String data;
-  dynamic error;
+  final bool hasMore;
+  final List<Item> items;
+  final num total;
+  final num pageNumber;
+  final num pageSize;
 
-  Recipe(this.success, this.data, this.error);
+  Recipe(this.hasMore, this.items, this.total, this.pageNumber, this.pageSize);
 
   factory Recipe.fromJson(dynamic json) => _$RecipeFromJson(json);
 
@@ -16,60 +18,41 @@ class Recipe {
 }
 
 @JsonSerializable()
-class Data {
-  bool hasMore;
-  List<Items> items;
-  num total;
-  num pageNumber;
-  num pageSize;
+class Item {
+  final num id;
+  final String name;
+  final String image;
+  final bool isFeatured;
+  final String? creatorLink;
+  final dynamic description;
+  final String? creatorName;
+  final String? creatorImage;
+  final AdditionalInfo additionalInfo;
 
-  Data(this.hasMore, this.items, this.total, this.pageNumber, this.pageSize);
-
-  factory Data.fromJson(dynamic json) => _$DataFromJson(json);
-
-  Map<String, dynamic> toJson() => _$DataToJson(this);
-}
-
-@JsonSerializable()
-class Items {
-  num id;
-  String? creatorLink;
-  String? creatorImage;
-  String createdAt;
-  String updatedAt;
-  bool isFeatured;
-  String name;
-  dynamic description;
-  String image;
-  String? creatorName;
-  AdditionalInfo additionalInfo;
-
-  Items(
+  const Item(
     this.id,
-    this.creatorLink,
-    this.creatorImage,
-    this.createdAt,
-    this.updatedAt,
-    this.isFeatured,
     this.name,
-    this.description,
     this.image,
+    this.isFeatured,
+    this.creatorLink,
+    this.description,
     this.creatorName,
+    this.creatorImage,
     this.additionalInfo,
   );
 
-  factory Items.fromJson(dynamic json) => _$ItemsFromJson(json);
+  factory Item.fromJson(dynamic json) => _$ItemFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ItemsToJson(this);
+  Map<String, dynamic> toJson() => _$ItemToJson(this);
 }
 
 @JsonSerializable()
 class AdditionalInfo {
-  num id;
-  int time;
-  String? videoLink;
+  final num id;
+  final int time;
+  final String? videoLink;
 
-  AdditionalInfo(this.id, this.time, this.videoLink);
+  const AdditionalInfo(this.id, this.time, this.videoLink);
 
   factory AdditionalInfo.fromJson(dynamic json) =>
       _$AdditionalInfoFromJson(json);

@@ -7,7 +7,7 @@ import '../../../core/widgets/app_text.dart';
 import '../../../data/model/recipe.dart';
 
 class SpotlightSection extends StatelessWidget {
-  final Items product;
+  final Item product;
   const SpotlightSection({super.key, required this.product});
 
   @override

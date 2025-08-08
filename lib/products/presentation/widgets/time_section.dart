@@ -7,7 +7,7 @@ import '../../../core/widgets/app_text.dart';
 import '../../../data/model/recipe.dart';
 
 class TimeSection extends StatelessWidget {
-  final Items product;
+  final Item product;
   const TimeSection({super.key, required this.product});
 
   @override

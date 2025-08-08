@@ -21,9 +21,9 @@ class ProductsScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(vertical: 16.h),
             sliver: SliverGrid(
               delegate: SliverChildBuilderDelegate((context, index) {
-                final product = products[index];
+                final product = items[index];
                 return ProductCard(product, key: ValueKey(product.id));
-              }, childCount: products.length),
+              }, childCount: items.length),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 12,

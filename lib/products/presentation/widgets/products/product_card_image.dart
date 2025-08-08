@@ -8,7 +8,7 @@ import '../spotlight_section.dart';
 import '../time_section.dart';
 
 class ProductCardImage extends StatelessWidget {
-  final Items product;
+  final Item product;
   const ProductCardImage({super.key, required this.product});
 
   @override

@@ -6,24 +6,15 @@ part of 'recipe.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Recipe _$RecipeFromJson(Map<String, dynamic> json) =>
-    Recipe(json['success'] as bool, json['data'] as String, json['error']);
-
-Map<String, dynamic> _$RecipeToJson(Recipe instance) => <String, dynamic>{
-  'success': instance.success,
-  'data': instance.data,
-  'error': instance.error,
-};
-
-Data _$DataFromJson(Map<String, dynamic> json) => Data(
+Recipe _$RecipeFromJson(Map<String, dynamic> json) => Recipe(
   json['hasMore'] as bool,
-  (json['items'] as List<dynamic>).map(Items.fromJson).toList(),
+  (json['items'] as List<dynamic>).map(Item.fromJson).toList(),
   json['total'] as num,
   json['pageNumber'] as num,
   json['pageSize'] as num,
 );
 
-Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
+Map<String, dynamic> _$RecipeToJson(Recipe instance) => <String, dynamic>{
   'hasMore': instance.hasMore,
   'items': instance.items,
   'total': instance.total,
@@ -31,31 +22,27 @@ Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
   'pageSize': instance.pageSize,
 };
 
-Items _$ItemsFromJson(Map<String, dynamic> json) => Items(
+Item _$ItemFromJson(Map<String, dynamic> json) => Item(
   json['id'] as num,
-  json['creatorLink'] as String?,
-  json['creatorImage'] as String?,
-  json['createdAt'] as String,
-  json['updatedAt'] as String,
-  json['isFeatured'] as bool,
   json['name'] as String,
-  json['description'],
   json['image'] as String,
+  json['isFeatured'] as bool,
+  json['creatorLink'] as String?,
+  json['description'],
   json['creatorName'] as String?,
+  json['creatorImage'] as String?,
   AdditionalInfo.fromJson(json['additionalInfo']),
 );
 
-Map<String, dynamic> _$ItemsToJson(Items instance) => <String, dynamic>{
+Map<String, dynamic> _$ItemToJson(Item instance) => <String, dynamic>{
   'id': instance.id,
-  'creatorLink': instance.creatorLink,
-  'creatorImage': instance.creatorImage,
-  'createdAt': instance.createdAt,
-  'updatedAt': instance.updatedAt,
-  'isFeatured': instance.isFeatured,
   'name': instance.name,
-  'description': instance.description,
   'image': instance.image,
+  'isFeatured': instance.isFeatured,
+  'creatorLink': instance.creatorLink,
+  'description': instance.description,
   'creatorName': instance.creatorName,
+  'creatorImage': instance.creatorImage,
   'additionalInfo': instance.additionalInfo,
 };
 

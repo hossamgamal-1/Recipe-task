@@ -8,7 +8,7 @@ import '../../../core/widgets/app_text.dart';
 import '../../../data/model/recipe.dart';
 
 class CreatorSection extends StatelessWidget {
-  final Items product;
+  final Item product;
   const CreatorSection({super.key, required this.product});
 
   @override
