@@ -1,4 +1,33 @@
+import '../../data/model/api_response.dart';
+import '../../data/model/category.dart';
 import '../../data/model/recipe.dart';
+
+final categories =
+    ApiResponse.fromJson(
+      {
+        "success": true,
+        "data": [
+          {"id": "Desserts", "name": "Desserts"},
+          {"id": "Lunch", "name": "Lunch"},
+          {"id": "Breakfast", "name": "Breakfast"},
+          {"id": "Easter Edition", "name": "Easter Edition"},
+          {"id": "snack", "name": "snack"},
+          {"id": "drink", "name": "drink"},
+          {"id": "healthy snack", "name": "healthy snack"},
+          {"id": "bel", "name": "bel"},
+          {
+            "id": "Spread and triangle cheese",
+            "name": "Spread and triangle cheese",
+          },
+        ],
+        "error": null,
+      },
+      (data) {
+        return (data as List? ?? [])
+            .map((json) => Category.fromJson(json))
+            .toList();
+      },
+    ).data;
 
 final products = <Items>[
   Items.fromJson({

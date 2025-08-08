@@ -15,14 +15,10 @@ class MyApp extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, _) {
         AppSizer.initialize(context);
-        return MaterialApp(
+        return const MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-            useMaterial3: true,
-          ),
-          home: const ProductsScreen(),
+          home: ProductsScreen(),
         );
       },
     );
