@@ -15,7 +15,7 @@ class AppText extends StatelessWidget {
     this.style,
     this.overflow = TextOverflow.ellipsis,
     this.textAlign = TextAlign.start,
-    this.maxLines = 2,
+    this.maxLines = 1,
     this.gradient,
   });
 

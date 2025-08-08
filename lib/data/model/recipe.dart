@@ -33,29 +33,30 @@ class Data {
 @JsonSerializable()
 class Items {
   num id;
-  String creatorLink;
-  String creatorImage;
+  String? creatorLink;
+  String? creatorImage;
   String createdAt;
   String updatedAt;
   bool isFeatured;
   String name;
   dynamic description;
   String image;
-  String creatorName;
+  String? creatorName;
   AdditionalInfo additionalInfo;
 
   Items(
-      this.id,
-      this.creatorLink,
-      this.creatorImage,
-      this.createdAt,
-      this.updatedAt,
-      this.isFeatured,
-      this.name,
-      this.description,
-      this.image,
-      this.creatorName,
-      this.additionalInfo);
+    this.id,
+    this.creatorLink,
+    this.creatorImage,
+    this.createdAt,
+    this.updatedAt,
+    this.isFeatured,
+    this.name,
+    this.description,
+    this.image,
+    this.creatorName,
+    this.additionalInfo,
+  );
 
   factory Items.fromJson(dynamic json) => _$ItemsFromJson(json);
 
@@ -65,8 +66,8 @@ class Items {
 @JsonSerializable()
 class AdditionalInfo {
   num id;
-  dynamic time;
-  dynamic videoLink;
+  int time;
+  String? videoLink;
 
   AdditionalInfo(this.id, this.time, this.videoLink);
 

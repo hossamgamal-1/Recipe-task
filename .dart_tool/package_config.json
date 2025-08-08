@@ -1025,10 +1025,10 @@
       "name": "apollo_task_flutter",
       "rootUri": "../",
       "packageUri": "lib/",
-      "languageVersion": "3.5"
+      "languageVersion": "3.7"
     }
   ],
-  "generated": "2025-08-07T23:05:21.459092Z",
+  "generated": "2025-08-08T01:31:00.835093Z",
   "generator": "pub",
   "generatorVersion": "3.7.0",
   "flutterRoot": "file:///J:/Dart/flutter-sdk",

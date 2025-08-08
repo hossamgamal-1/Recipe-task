@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../widgets/app_text_style.dart';
 import 'app_colors.dart';
-import 'app_sizer.dart';
 
 class FontConstants {
   const FontConstants._();
@@ -25,14 +24,34 @@ class FontWeightHelper {
 class TextStyles {
   const TextStyles._();
 
+  static final font10MediumDarkGray = appTextStyle(
+    fontSize: 10,
+    color: AppColors.darkGray,
+    fontWeight: FontWeightHelper.medium,
+  );
   static final font12SemiBoldDarkGreen = appTextStyle(
-    fontSize: 12.sp,
+    fontSize: 12,
     color: AppColors.darkGreen,
     fontWeight: FontWeightHelper.semiBold,
   );
+  static final font12ExtraBoldDarkGreen = appTextStyle(
+    fontSize: 12,
+    color: AppColors.darkGreen,
+    fontWeight: FontWeightHelper.extraBold,
+  );
+  static final font13SemiBoldDarkGreen = appTextStyle(
+    fontSize: 13,
+    color: AppColors.darkGreen,
+    fontWeight: FontWeightHelper.semiBold,
+  );
+  static final font16MediumBlack = appTextStyle(
+    fontSize: 16,
+    color: AppColors.black,
+    fontWeight: FontWeightHelper.medium,
+  );
 
   static final font24BlackDarkGreen = appTextStyle(
-    fontSize: 24.sp,
+    fontSize: 24,
     color: AppColors.darkGreen,
     fontWeight: FontWeightHelper.black,
   );
