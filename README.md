@@ -2,38 +2,34 @@
 
 A simple, cleanly-structured Flutter app that lists recipes, shows categories, and displays detailed info for a selected recipe. Built with BLoC (Cubit), Dio, GetIt, and JSON code generation.
 
-### Features
-
-- Recipes grid with skeleton loading states
-- Categories chips in a pinned sliver app bar
-- Recipe details screen with ingredients and steps
-- Robust error handling with retry
-- Responsive layout via a lightweight sizing helper
-
-### Architecture (high level)
-
-- Core: routing, DI, networking (Dio), theming, shared widgets/utilities
-- Feature modules: data (DTOs, mappers, remote), domain (entities, use cases, repo interfaces), presentation (Cubits, UI)
-
 ### Project structure
+<p align="center"><img src="assets/images/logo.jpg" alt="Rabbit Recipes" width="120"></p>
 
-```
-lib/
-	core/             # di, routing, networking, theming, shared models/widgets
-	recipes/          # feature module
-		data/           # DTOs, mappers, remote data sources, repo impl
-		domain/         # entities, use cases, repo interface
-		presentation/   # cubits, screens, widgets
-test/
-	recipes/          # repository unit tests
-```
+<h1 align="center">Recipe Task (Flutter)</h1>
 
-### Quick start (Windows PowerShell)
-### Setup
+<p align="center">A clean Flutter app that lists recipes, categories, and details — built with BLoC (Cubit), Dio, GetIt, and JSON codegen.</p>
 
-If it’s your first time on this machine, follow these steps:
+<p align="center">
+	<a href="https://dart.dev"><img src="https://img.shields.io/badge/Dart-3.7%2B-0175C2?logo=dart&logoColor=white" alt="Dart 3.7+"></a>
+	<a href="https://flutter.dev"><img src="https://img.shields.io/badge/Flutter-%20-02569B?logo=flutter&logoColor=white" alt="Flutter"></a>
+</p>
 
-1) Verify Flutter and Dart (Make sure to have dart version >= 3.7)
+## Table of Contents
+
+- Setup
+- Run and common tasks
+- Features
+- Architecture
+- Project structure
+- Configuration
+- Tech stack
+- Documentation
+
+## Setup
+
+If it’s your first time on this machine:
+
+1) Verify Flutter and Dart (Dart >= 3.7)
 ```powershell
 flutter --version
 dart --version
@@ -54,40 +50,57 @@ flutter pub get
 dart run build_runner build --delete-conflicting-outputs
 ```
 
-5) Run on your target device/emulator
+5) Run on a device/emulator
 ```powershell
 flutter run
 ```
 
-For more details and troubleshooting, see the User Guide: [docs/user.md#setup](docs/user.md#setup)
+For more details and troubleshooting, see: [docs/user.md#setup](docs/user.md#setup)
 
+## Run and common tasks
 
-1) Install dependencies
-```powershell
-flutter pub get
-```
-
-2) Generate JSON code
-```powershell
-dart run build_runner build --delete-conflicting-outputs
-```
-
-3) Run the app
+- Run the app
 ```powershell
 flutter run
 ```
 
-4) Run tests
+- Run tests
 ```powershell
 flutter test
 ```
 
-5) Lint
+- Analyze (lint)
 ```powershell
 flutter analyze
 ```
 
-### Configuration
+## Features
+
+- Recipes grid with skeleton loading states
+- Categories chips in a pinned sliver app bar
+- Recipe details screen with ingredients and steps
+- Robust error handling with retry
+- Responsive layout via a lightweight sizing helper
+
+## Architecture (high level)
+
+- Core: routing, DI, networking (Dio), theming, shared widgets/utilities
+- Feature modules: data (DTOs, mappers, remote), domain (entities, use cases, repo interfaces), presentation (Cubits, UI)
+
+## Project structure
+
+```
+lib/
+	core/             # di, routing, networking, theming, shared models/widgets
+	recipes/          # feature module
+		data/           # DTOs, mappers, remote data sources, repo impl
+		domain/         # entities, use cases, repo interface
+		presentation/   # cubits, screens, widgets
+test/
+	recipes/          # repository unit tests
+```
+
+## Configuration
 
 API base and endpoints are defined in `lib/core/networking/api_constants.dart`:
 - Base: `https://mocki.io/v1/`
@@ -95,23 +108,55 @@ API base and endpoints are defined in `lib/core/networking/api_constants.dart`:
 - Categories: `00bc95d2-5706-4b08-91b4-5ca00bdb78c7`
 - Recipe details: `3ca54879-2bb8-4d35-b2bb-77c95a15012a` (id)
 
-### Tech stack
+## Tech stack
 
 - Flutter (Dart >= 3.7)
-- State: flutter_bloc (Cubits)
+- State: flutter_bloc (Cubit)
 - Networking: Dio (+ PrettyDioLogger in debug)
 - DI: GetIt
 - JSON: json_serializable + json_annotation
 - Tests: flutter_test + mocktail
 
-### Documentation
+## Project Requirements
 
-This README is the front door to the project. For deep dives, use the guides below:
+This document captures what the app does today and what it aims to achieve next. It’s written to be precise, testable, and implementation-aware.
 
-- Requirements — what the app does and the constraints: [docs/requirements.md](docs/requirements.md)
-- Design — architecture decisions and data flow: [docs/design.md](docs/design.md)
-- Technical — stack, modules, configuration, codegen: [docs/technical.md](docs/technical.md)
-- User Guide — setup, run, usage, troubleshooting: [docs/user.md](docs/user.md)
-- Testing — strategy, current coverage, how to run: [docs/testing.md](docs/testing.md)
+### Scope and goals
 
-Need help right now? See troubleshooting in the User Guide: [docs/user.md#troubleshooting](docs/user.md#troubleshooting)
+- Build a Flutter app that lists recipes and shows details for a selected recipe.
+- Fetch data from a public HTTP API using Dio.
+- Use BLoC/Cubit for state management and GetIt for dependency injection.
+- Provide responsive UI and basic error handling with retry.
+
+Out of scope (for now): authentication, persistence/caching, push notifications, analytics, complex filtering/search, offline-first data storage.
+
+### Functional requirements (current)
+
+1. Home screen
+   - Display a pinned sliver app bar with title and logo.
+   - Show a horizontal list of recipe categories (read-only visual list for now).
+   - Show a grid of recipe cards (2 columns) with skeleton placeholders while loading.
+   - On error, show an error message and a Retry button to refetch the first page.
+
+2. Recipe details
+   - Navigating to a recipe card opens a details screen using a named route and the recipe id.
+   - While loading, show a skeleton view; on success, show details (ingredients, steps, meta info).
+   - On error, show an error message and a Retry button that retriggers the fetch for the same id.
+
+3. Networking
+   - Read-only GET endpoints to fetch: categories list, paginated recipe list, and detailed recipe by id.
+   - Handle common HTTP and connectivity errors and present a user-friendly message.
+
+### Non-functional requirements
+
+- Reliability: timeouts for network requests (90s), graceful error handling, connectivity check before calls.
+- Performance: lazy rendering via slivers, lightweight DTO-to-entity mapping, cached network images.
+- Responsiveness: adapt sizes via `AppSizer` to various screen dimensions.
+- Code quality: layered architecture (data/domain/presentation), JSON code generation, static analysis with flutter_lints.
+
+### Acceptance criteria (high-level)
+
+- When online and the API responds with success, the home screen shows at least one recipe card and category chip list.
+- Tapping a recipe navigates to a details screen that loads and displays recipe details.
+- When a network or server error occurs, the user sees a clear message and can tap Retry to try again.
+- App adapts visually on different screen sizes using `AppSizer`.
