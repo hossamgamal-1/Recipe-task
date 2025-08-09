@@ -24,6 +24,7 @@ A simple, cleanly-structured Flutter app that lists recipes, shows categories, a
 - Configuration
 - Tech stack
 - Documentation
+- Project Requirements
 
 ## Setup
 
