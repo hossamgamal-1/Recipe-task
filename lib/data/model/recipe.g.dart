@@ -23,7 +23,7 @@ Map<String, dynamic> _$RecipeToJson(Recipe instance) => <String, dynamic>{
 };
 
 Item _$ItemFromJson(Map<String, dynamic> json) => Item(
-  json['id'] as num,
+  (json['id'] as num).toInt(),
   json['name'] as String,
   json['image'] as String,
   json['isFeatured'] as bool,

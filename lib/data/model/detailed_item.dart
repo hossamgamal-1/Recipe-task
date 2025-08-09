@@ -33,7 +33,7 @@ class DetailedItem extends Item {
 
 @JsonSerializable()
 class Ingredient {
-  final int quanitity;
+  final int? quanitity;
   final bool isFeatured;
   final Product product;
 
@@ -52,18 +52,13 @@ class Product {
   final num vat;
   final num vatCost;
   final num priceBeforeBulkDiscount;
-  final String status;
   final num? weight;
-  final String? erpNo;
-  final String? remark;
-  final String? arRemark;
-  final String? coverPhoto;
-  final int pack;
-  final String? photoType;
   final String? imageUrl;
   final bool inStock;
   final int replenishmentTime;
-
+  final String unit;
+  final String unitValue;
+  final String name;
   const Product(
     this.id,
     this.basePrice,
@@ -71,17 +66,13 @@ class Product {
     this.vat,
     this.vatCost,
     this.priceBeforeBulkDiscount,
-    this.status,
     this.weight,
-    this.erpNo,
-    this.remark,
-    this.arRemark,
-    this.coverPhoto,
-    this.pack,
-    this.photoType,
     this.imageUrl,
     this.inStock,
     this.replenishmentTime,
+    this.unit,
+    this.unitValue,
+    this.name,
   );
 
   factory Product.fromJson(dynamic json) => _$ProductFromJson(json);

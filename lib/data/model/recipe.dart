@@ -19,7 +19,7 @@ class Recipe {
 
 @JsonSerializable()
 class Item {
-  final num id;
+  final int id;
   final String name;
   final String image;
   final bool isFeatured;

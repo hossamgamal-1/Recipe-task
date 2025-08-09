@@ -30,7 +30,7 @@ class ProductCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ProductCardImage(product: product),
+            ProductCardImage(item: product),
             Expanded(
               child: AppText(
                 product.name,
@@ -39,7 +39,7 @@ class ProductCard extends StatelessWidget {
               ),
             ),
             SizedBox(height: 8.h),
-            CreatorSection(product: product),
+            CreatorSection(item: product),
           ],
         ),
       ),

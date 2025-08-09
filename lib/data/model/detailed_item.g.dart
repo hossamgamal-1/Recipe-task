@@ -7,7 +7,7 @@ part of 'detailed_item.dart';
 // **************************************************************************
 
 DetailedItem _$DetailedItemFromJson(Map<String, dynamic> json) => DetailedItem(
-  json['id'] as num,
+  (json['id'] as num).toInt(),
   json['name'] as String,
   json['image'] as String,
   json['isFeatured'] as bool,
@@ -37,7 +37,7 @@ Map<String, dynamic> _$DetailedItemToJson(DetailedItem instance) =>
     };
 
 Ingredient _$IngredientFromJson(Map<String, dynamic> json) => Ingredient(
-  (json['quanitity'] as num).toInt(),
+  (json['quanitity'] as num?)?.toInt(),
   json['isFeatured'] as bool,
   Product.fromJson(json['product']),
 );
@@ -56,17 +56,13 @@ Product _$ProductFromJson(Map<String, dynamic> json) => Product(
   json['vat'] as num,
   json['vatCost'] as num,
   json['priceBeforeBulkDiscount'] as num,
-  json['status'] as String,
   json['weight'] as num?,
-  json['erpNo'] as String?,
-  json['remark'] as String?,
-  json['arRemark'] as String?,
-  json['coverPhoto'] as String?,
-  (json['pack'] as num).toInt(),
-  json['photoType'] as String?,
   json['imageUrl'] as String?,
   json['inStock'] as bool,
   (json['replenishmentTime'] as num).toInt(),
+  json['unit'] as String,
+  json['unitValue'] as String,
+  json['name'] as String,
 );
 
 Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
@@ -76,17 +72,13 @@ Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
   'vat': instance.vat,
   'vatCost': instance.vatCost,
   'priceBeforeBulkDiscount': instance.priceBeforeBulkDiscount,
-  'status': instance.status,
   'weight': instance.weight,
-  'erpNo': instance.erpNo,
-  'remark': instance.remark,
-  'arRemark': instance.arRemark,
-  'coverPhoto': instance.coverPhoto,
-  'pack': instance.pack,
-  'photoType': instance.photoType,
   'imageUrl': instance.imageUrl,
   'inStock': instance.inStock,
   'replenishmentTime': instance.replenishmentTime,
+  'unit': instance.unit,
+  'unitValue': instance.unitValue,
+  'name': instance.name,
 };
 
 Step _$StepFromJson(Map<String, dynamic> json) => Step(
