@@ -11,6 +11,6 @@ class SuccessResult<T> extends ApiResult<T> {
 class FailureResult<T> extends ApiResult<T> {
   final String errorMessage;
 
-  FailureResult(ErrorHandler errorHandler)
-      : errorMessage = errorHandler.errorMessage;
+  FailureResult(dynamic error)
+    : errorMessage = ErrorHandler.handle(error).errorMessage;
 }

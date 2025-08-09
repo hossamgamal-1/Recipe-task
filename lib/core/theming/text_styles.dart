@@ -24,7 +24,7 @@ class FontWeightHelper {
 class TextStyles {
   const TextStyles._();
 
-  // Order: font size asc -> weight asc -> color name alpha
+  // Order: font size asc -> weight asc -> color name alphabetical
   static final font10MediumDarkGray = appTextStyle(
     fontSize: 10,
     color: AppColors.darkGray,

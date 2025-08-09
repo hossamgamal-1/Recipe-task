@@ -1,4 +1,4 @@
-name: apollo_task_flutter
+name: recipe_task_flutter
 description: "A new Flutter project."
 
 publish_to: 'none'
@@ -12,24 +12,25 @@ dependencies:
   flutter:
     sdk: flutter
 
-  #State Management
-  provider: ^6.1.2
+  # State Management
+  flutter_bloc: ^9.1.1
 
-  #Network Service
+  # Network Service
   dio: ^5.7.0
 
-  #JSON
+  # JSON
   json_annotation: ^4.9.0
 
-  #Images Utils
+  # Images Utils
   flutter_svg: ^2.0.10+1
   cached_network_image: ^3.4.0
 
-  #UI Components
-  shimmer: ^3.0.0
-  auto_size_text: ^3.0.0
+  # Dependency Injection
+  get_it: ^8.2.0
+
+  # UI Components
   cupertino_icons: ^1.0.8
-  flutter_bloc: ^9.1.1
+  skeletonizer: ^1.4.3
 
 dev_dependencies:
   flutter_test:

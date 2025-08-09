@@ -21,16 +21,21 @@ class ErrorHandler implements Exception {
   ErrorHandler.handle(dynamic error) {
     if (error is DioException) {
       apiErrorModel = _handleError(error);
-    } else if (error is String) {
+      return;
+    }
+
+    if (error is String) {
       apiErrorModel = ApiErrorModel(message: error);
-    } else if (error is Exception) {
+      return;
+    }
+
+    if (error is Exception) {
       final errorMessage = error.toString().split(':').last;
       apiErrorModel = ApiErrorModel(message: errorMessage);
-    } else if (error.toString().contains('is not a subtype of type')) {
-      apiErrorModel = DataSource.parsingError.getFailure();
-    } else {
-      apiErrorModel = DataSource.defaultError.getFailure();
+      return;
     }
+
+    apiErrorModel = DataSource.defaultError.getFailure();
   }
 
   String get errorMessage => apiErrorModel?.message ?? 'Unknown error';

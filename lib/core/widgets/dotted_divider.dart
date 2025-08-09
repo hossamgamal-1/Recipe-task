@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../theming/app_colors.dart';
 
-/// A simple horizontal dotted/dashed divider that expands to the available width.
 class DottedDivider extends StatelessWidget {
   final double thickness;
   final double dashWidth;
@@ -35,6 +34,7 @@ class DottedDivider extends StatelessWidget {
     );
 
     if (margin == null) return divider;
+
     return Padding(padding: margin!, child: divider);
   }
 }
