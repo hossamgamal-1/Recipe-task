@@ -12,15 +12,23 @@ class CreatorSection extends StatelessWidget {
   final String? creatorLink;
   final bool isDetailsScreen;
 
-  const CreatorSection({super.key, this.creatorName, this.creatorImage, this.creatorLink})
-    : isDetailsScreen = false;
+  const CreatorSection({
+    super.key,
+    this.creatorName,
+    this.creatorImage,
+    this.creatorLink,
+  }) : isDetailsScreen = false;
 
-  const CreatorSection.details({super.key, this.creatorName, this.creatorImage, this.creatorLink})
-    : isDetailsScreen = true;
+  const CreatorSection.details({
+    super.key,
+    this.creatorName,
+    this.creatorImage,
+    this.creatorLink,
+  }) : isDetailsScreen = true;
 
   @override
   Widget build(BuildContext context) {
-  if (creatorName == null || creatorImage == null) {
+    if (creatorName == null || creatorImage == null) {
       return const SizedBox.shrink();
     }
 

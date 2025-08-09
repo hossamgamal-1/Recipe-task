@@ -34,11 +34,12 @@ class DetailedRecipe extends Recipe {
 
 @JsonSerializable()
 class Ingredient {
-  final int? quanitity;
+  @JsonKey(name: 'quantity')
+  final int? quantity;
   final bool isFeatured;
   final Product product;
 
-  const Ingredient(this.quanitity, this.isFeatured, this.product);
+  const Ingredient(this.quantity, this.isFeatured, this.product);
 
   factory Ingredient.fromJson(dynamic json) => _$IngredientFromJson(json);
 

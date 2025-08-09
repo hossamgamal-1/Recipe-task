@@ -22,7 +22,19 @@ class RecipesGridBlocBuilder extends StatelessWidget {
             RecipesError(:final message) => SliverToBoxAdapter(
               child: Padding(
                 padding: EdgeInsets.only(top: 40.h),
-                child: Center(child: Text(message)),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Center(child: Text(message)),
+                    SizedBox(height: 12.h),
+                    ElevatedButton(
+                      onPressed:
+                          () =>
+                              context.read<RecipesCubit>().load(refresh: true),
+                      child: const Text('Retry'),
+                    ),
+                  ],
+                ),
               ),
             ),
             _ => const SliverToBoxAdapter(child: SizedBox.shrink()),

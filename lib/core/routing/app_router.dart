@@ -21,18 +21,22 @@ class AppRouter {
         ],
         child: const RecipesScreen(),
       ),
-      AppRoutes.recipeDetails => BlocProvider(
-        create: (_) {
-          return RecipeDetailsCubit(getIt())..load(settings.arguments as int);
-        },
-        child: const RecipeDetailsScreen(),
-      ),
+      AppRoutes.recipeDetails => () {
+        final arg = settings.arguments;
+        if (arg is! int) {
+          return const Scaffold(body: Center(child: Text('Invalid recipe id')));
+        }
+        return BlocProvider(
+          create: (_) => RecipeDetailsCubit(getIt())..load(arg),
+          child: RecipeDetailsScreen(productId: arg),
+        );
+      }(),
 
       _ => Scaffold(
         body: Center(child: Text('No route defined for ${settings.name}')),
       ),
     };
 
-    return MaterialPageRoute(builder: (_) => screen);
+    return MaterialPageRoute(settings: settings, builder: (_) => screen);
   }
 }

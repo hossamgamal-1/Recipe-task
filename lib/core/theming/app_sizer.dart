@@ -8,12 +8,14 @@ class AppSizer {
   static late double _screenWidth;
   static late double _screenHeight;
   static late double _scaleText;
+  static late double _textScaleFactor;
 
   AppSizer.initialize(this._context) {
     final size = MediaQuery.sizeOf(_context);
     _screenWidth = size.width;
     _screenHeight = size.height;
     _scaleText = _screenWidth / _defaultSize.width;
+    _textScaleFactor = MediaQuery.textScalerOf(_context).scale(1.0);
   }
 
   static Future<void> ensureScreenSize() async {
@@ -47,5 +49,5 @@ extension Responsive on num {
 
   double get fromHeight => this / 100 * AppSizer._screenHeight;
 
-  double get sp => this * AppSizer._scaleText;
+  double get sp => this * AppSizer._scaleText * AppSizer._textScaleFactor;
 }

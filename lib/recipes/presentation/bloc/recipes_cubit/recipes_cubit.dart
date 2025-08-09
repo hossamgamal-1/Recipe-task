@@ -8,8 +8,8 @@ part 'recipes_state.dart';
 
 //TODO: refactor this
 class RecipesCubit extends Cubit<RecipesState> {
-  final GetRecipesUseCase _getProducts;
-  RecipesCubit(this._getProducts) : super(const RecipesInitial());
+  final GetRecipesUseCase _getRecipes;
+  RecipesCubit(this._getRecipes) : super(const RecipesInitial());
 
   int _page = 1;
   bool _hasMore = true;
@@ -23,7 +23,7 @@ class RecipesCubit extends Cubit<RecipesState> {
     }
     final isLoadMore = _items.isNotEmpty;
     emit(RecipesLoading(isLoadMore: isLoadMore));
-    final response = await _getProducts(pageNumber: _page, pageSize: 20);
+    final response = await _getRecipes(pageNumber: _page, pageSize: 20);
     switch (response) {
       case SuccessResult(:final data):
         _items = [..._items, ...data];

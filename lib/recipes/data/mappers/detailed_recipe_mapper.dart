@@ -19,7 +19,7 @@ extension DetailedRecipeMapper on DetailedRecipe {
 
 extension IngredientMapper on Ingredient {
   IngredientEntity toEntity() => IngredientEntity(
-    quantity: quanitity,
+    quantity: quantity,
     isFeatured: isFeatured,
     product: product.toEntity(),
   );

@@ -10,7 +10,6 @@ class DioHelper {
     final response = await _dio.get(
       model.endPoint,
       queryParameters: model.queries,
-      data: model.body,
       options: Options(
         headers: model.headers,
         responseType: model.responseType,

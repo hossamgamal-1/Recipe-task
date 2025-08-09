@@ -4,18 +4,7 @@ import 'api_error_model.dart';
 
 part 'errors_data.dart';
 
-extension DioErrorExtension on DioExceptionType {
-  ApiErrorModel getFailure() {
-    try {
-      final dataSource = DataSource.values.byName(name);
-      return dataSource.getFailure();
-    } catch (e) {
-      throw Exception('$name is not a valid DataSource enum value.');
-    }
-  }
-}
-
-class ErrorHandler implements Exception {
+class ErrorHandler {
   ApiErrorModel? apiErrorModel;
 
   ErrorHandler.handle(dynamic error) {
@@ -64,13 +53,13 @@ class ErrorHandler implements Exception {
         }
 
         if (hasResponse && hasStatusCode) {
-          ApiErrorModel? apiErrorModel;
-          _errorsData.forEach((key, value) {
-            if (value.code == response.statusCode) {
-              apiErrorModel = value;
-            }
-          });
-          if (apiErrorModel != null) return apiErrorModel!;
+          ApiErrorModel? apiErrorModel =
+              _errorsData.entries
+                  .where((e) => e.value.code == response.statusCode)
+                  .firstOrNull
+                  ?.value;
+
+          if (apiErrorModel != null) return apiErrorModel;
         }
 
         return DataSource.defaultError.getFailure();
@@ -78,6 +67,17 @@ class ErrorHandler implements Exception {
       case DioExceptionType.connectionError:
       case DioExceptionType.badCertificate:
         return DataSource.defaultError.getFailure();
+    }
+  }
+}
+
+extension DioErrorExtension on DioExceptionType {
+  ApiErrorModel getFailure() {
+    try {
+      final dataSource = DataSource.values.byName(name);
+      return dataSource.getFailure();
+    } catch (e) {
+      throw Exception('$name is not a valid DataSource enum value.');
     }
   }
 }

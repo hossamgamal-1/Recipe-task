@@ -7,7 +7,8 @@ import '../widgets/recipe_details/recipe_details_content.dart';
 import '../widgets/recipe_details/recipe_details_skeleton_content.dart';
 
 class RecipeDetailsScreen extends StatefulWidget {
-  const RecipeDetailsScreen({super.key});
+  final int productId;
+  const RecipeDetailsScreen({super.key, required this.productId});
 
   @override
   State<RecipeDetailsScreen> createState() => _RecipeDetailsScreenState();
@@ -35,7 +36,22 @@ class _RecipeDetailsScreenState extends State<RecipeDetailsScreen> {
               detailedRecipe: state.details,
               scrollController: _scrollController,
             ),
-            RecipeDetailsError() => const RecipeDetailsSkeletonContent(),
+            RecipeDetailsError(:final message) => Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(message),
+                  const SizedBox(height: 12),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Attempt retry with the last used id if available via route args
+                      context.read<RecipeDetailsCubit>().load(widget.productId);
+                    },
+                    child: const Text('Retry'),
+                  ),
+                ],
+              ),
+            ),
           };
         },
       ),

@@ -17,7 +17,11 @@ dependencies:
 
   # Network Service
   dio: ^5.7.0
+  pretty_dio_logger: ^1.4.0
 
+  # A library that checks for internet by opening a socket to a list of specified addresses
+  internet_connection_checker: ^1.0.0+1
+  
   # JSON
   json_annotation: ^4.9.0
 
@@ -29,8 +33,9 @@ dependencies:
   get_it: ^8.2.0
 
   # UI Components
-  cupertino_icons: ^1.0.8
+  equatable: ^2.0.5
   skeletonizer: ^1.4.3
+  cupertino_icons: ^1.0.8
 
 dev_dependencies:
   flutter_test:
@@ -39,7 +44,7 @@ dev_dependencies:
   json_serializable: ^6.8.0
 
   flutter_lints: ^4.0.0
-  pretty_dio_logger: ^1.4.0
+  mocktail: ^1.0.3
 
 flutter:
 
@@ -51,15 +56,15 @@ flutter:
   fonts:
     - family: inter
       fonts:
-        - asset: assets\fonts\Inter-Black.otf
+        - asset: assets/fonts/Inter-Black.otf
           weight: 900
-        - asset: assets\fonts\Inter-ExtraBold.otf
+        - asset: assets/fonts/Inter-ExtraBold.otf
           weight: 800
-        - asset: assets\fonts\Inter-Bold.otf
+        - asset: assets/fonts/Inter-Bold.otf
           weight: 700
-        - asset: assets\fonts\Inter-SemiBold.otf
+        - asset: assets/fonts/Inter-SemiBold.otf
           weight: 600
-        - asset: assets\fonts\Inter-Medium.otf
+        - asset: assets/fonts/Inter-Medium.otf
           weight: 500
-        - asset: assets\fonts\Inter-Regular.otf
+        - asset: assets/fonts/Inter-Regular.otf
           weight: 400

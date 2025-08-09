@@ -40,14 +40,14 @@ Map<String, dynamic> _$DetailedRecipeToJson(DetailedRecipe instance) =>
     };
 
 Ingredient _$IngredientFromJson(Map<String, dynamic> json) => Ingredient(
-  (json['quanitity'] as num?)?.toInt(),
+  (json['quantity'] as num?)?.toInt(),
   json['isFeatured'] as bool,
   Product.fromJson(json['product']),
 );
 
 Map<String, dynamic> _$IngredientToJson(Ingredient instance) =>
     <String, dynamic>{
-      'quanitity': instance.quanitity,
+      'quantity': instance.quantity,
       'isFeatured': instance.isFeatured,
       'product': instance.product,
     };

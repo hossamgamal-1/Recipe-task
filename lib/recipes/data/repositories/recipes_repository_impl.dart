@@ -13,42 +13,31 @@ class RecipesRepositoryImpl implements RecipesRepository {
   const RecipesRepositoryImpl(this._remote);
 
   @override
-  Future<ApiResult<List<CategoryEntity>>> getCategories() async {
-    try {
-      final data = await _remote.fetchCategories();
-
-      return SuccessResult(data.map((e) => e.toEntity()).toList());
-    } catch (e) {
-      return FailureResult(e);
-    }
+  Future<ApiResult<List<CategoryEntity>>> getCategories() {
+    return ApiResult.handle(
+      _remote.fetchCategories,
+      (data) => data.map((e) => e.toEntity()).toList(),
+    );
   }
 
   @override
   Future<ApiResult<DetailedRecipeEntity>> getRecipeDetails({
     required int productId,
-  }) async {
-    try {
-      final data = await _remote.fetchRecipeDetails(productId);
-
-      return SuccessResult(data.toEntity());
-    } catch (e) {
-      return FailureResult(e);
-    }
+  }) {
+    return ApiResult.handle(
+      () => _remote.fetchRecipeDetails(productId),
+      (data) => data.toEntity(),
+    );
   }
 
   @override
   Future<ApiResult<List<RecipeEntity>>> getRecipes({
-    int pageNumber = 1,
-    int pageSize = 20,
+    required int pageNumber,
+    required int pageSize,
   }) async {
-    try {
-      final data = await _remote.fetchRecipes(
-        pageNumber: pageNumber,
-        pageSize: pageSize,
-      );
-      return SuccessResult(data.map((e) => e.toEntity()).toList());
-    } catch (e) {
-      return FailureResult(e);
-    }
+    return ApiResult.handle(
+      () => _remote.fetchRecipes(pageNumber: pageNumber, pageSize: pageSize),
+      (data) => data.items.map((e) => e.toEntity()).toList(),
+    );
   }
 }

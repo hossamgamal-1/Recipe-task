@@ -8,9 +8,12 @@ import '../models/detailed_recipe.dart';
 import '../models/recipe.dart';
 
 abstract class RecipesRemoteDataSource {
-  Future<List<Category>> fetchCategories();
-  Future<List<Recipe>> fetchRecipes({int pageNumber = 1, int pageSize = 20});
-  Future<DetailedRecipe> fetchRecipeDetails(int productId);
+  Future<ApiResponse<List<Category>>> fetchCategories();
+  Future<ApiResponse<PaginatedList<Recipe>>> fetchRecipes({
+    int pageNumber = 1,
+    int pageSize = 20,
+  });
+  Future<ApiResponse<DetailedRecipe>> fetchRecipeDetails(int productId);
 }
 
 class RecipesRemoteDataSourceImpl implements RecipesRemoteDataSource {
@@ -18,57 +21,50 @@ class RecipesRemoteDataSourceImpl implements RecipesRemoteDataSource {
   const RecipesRemoteDataSourceImpl(this._dioHelper);
 
   @override
-  Future<List<Category>> fetchCategories() async {
+  Future<ApiResponse<List<Category>>> fetchCategories() async {
     final response = await _dioHelper.getData(
       const ApiRequestModel(endPoint: ApiConstants.getCategoriesEP),
     );
 
-    final apiResponse = ApiResponse.fromJson(
+    return ApiResponse.fromJson(
       response.data,
       (json) => (json as List).map((e) => Category.fromJson(e)).toList(),
     );
-
-    return apiResponse.data;
   }
 
   @override
-  Future<List<Recipe>> fetchRecipes({
+  Future<ApiResponse<PaginatedList<Recipe>>> fetchRecipes({
     int pageNumber = 1,
     int pageSize = 20,
   }) async {
     final response = await _dioHelper.getData(
       ApiRequestModel(
-        endPoint: ApiConstants.getProductsEP,
+        endPoint: ApiConstants.getRecipesEP,
         queries: {'pageNumber': pageNumber, 'pageSize': pageSize},
       ),
     );
 
-    final apiResponse = ApiResponse.fromJson(
+    return ApiResponse.fromJson(
       response.data,
-      (json) =>
-          PaginatedList.fromJson(
-            json as Map<String, dynamic>,
-            (item) => Recipe.fromJson(item),
-          ).items,
+      (json) => PaginatedList.fromJson(
+        json as Map<String, dynamic>,
+        (item) => Recipe.fromJson(item),
+      ),
     );
-
-    return apiResponse.data;
   }
 
   @override
-  Future<DetailedRecipe> fetchRecipeDetails(int productId) async {
+  Future<ApiResponse<DetailedRecipe>> fetchRecipeDetails(int productId) async {
     final response = await _dioHelper.getData(
       ApiRequestModel(
-        endPoint: ApiConstants.getProductDetailsEP,
+        endPoint: ApiConstants.getRecipeDetailsEP,
         queries: {'id': productId},
       ),
     );
 
-    final apiResponse = ApiResponse.fromJson(
+    return ApiResponse.fromJson(
       response.data as Map<String, dynamic>,
       (json) => DetailedRecipe.fromJson(json),
     );
-
-    return apiResponse.data;
   }
 }

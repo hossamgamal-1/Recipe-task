@@ -28,73 +28,67 @@ extension DataSourceExtension on DataSource {
 }
 
 final _errorsData = <DataSource, ApiErrorModel>{
-  DataSource.noContent: const ApiErrorModel(
-    code: 201,
-    message: 'لا توجد بيانات',
-  ),
-  DataSource.badRequest: const ApiErrorModel(
-    code: 400,
-    message: 'طلب غير صالح',
-  ),
+  DataSource.noContent: const ApiErrorModel(code: 201, message: 'No content'),
+  DataSource.badRequest: const ApiErrorModel(code: 400, message: 'Bad request'),
 
   DataSource.unAuthorized: const ApiErrorModel(
     code: 401,
-    message: 'غير مصرح به',
+    message: 'Unauthorized',
   ),
 
-  DataSource.forbidden: const ApiErrorModel(code: 403, message: 'غير مسموح به'),
-  DataSource.notFound: const ApiErrorModel(
-    code: 404,
-    message: 'الصفحة غير موجودة',
-  ),
+  DataSource.forbidden: const ApiErrorModel(code: 403, message: 'Forbidden'),
+  DataSource.notFound: const ApiErrorModel(code: 404, message: 'Not found'),
 
   DataSource.internalServerError: const ApiErrorModel(
     code: 500,
-    message: 'خطأ في الخادم الداخلي',
+    message: 'Internal server error',
   ),
   DataSource.serverFailure: const ApiErrorModel(
     code: 502,
-    message: 'خطأ في الخادم',
+    message: 'Server failure',
   ),
   DataSource.badGateway: const ApiErrorModel(
     code: 503,
-    message: 'الخادم غير متاح مؤقتاً',
+    message: 'Service unavailable',
   ),
 
   DataSource.apiLogicError: const ApiErrorModel(
     code: 422,
-    message: 'Api Logic Error',
+    message: 'API logic error',
   ),
 
   DataSource.connectionTimeout: const ApiErrorModel(
     code: -1,
-    message: 'تجاوز وقت الاتصال',
+    message: 'Connection timeout',
   ),
 
   DataSource.cancel: const ApiErrorModel(code: -2, message: 'Cancel'),
 
   DataSource.receiveTimeout: const ApiErrorModel(
     code: -3,
-    message: 'تجاوز وقت الاستلام',
+    message: 'Receive timeout',
   ),
 
   DataSource.sendTimeout: const ApiErrorModel(
     code: -4,
-    message: 'تجاوز وقت الإرسال',
+    message: 'Send timeout',
   ),
 
-  DataSource.cacheError: const ApiErrorModel(code: -5, message: 'Cache Error'),
+  DataSource.cacheError: const ApiErrorModel(code: -5, message: 'Cache error'),
 
   DataSource.noInternetConnection: const ApiErrorModel(
     code: -6,
-    message: 'لا يوجد اتصال بالانترنت',
+    message: 'No internet connection',
   ),
   DataSource.parsingError: const ApiErrorModel(
     code: -7,
-    message: 'خطأ في تحليل البيانات',
+    message: 'Parsing error',
   ),
 
-  DataSource.defaultError: const ApiErrorModel(code: -8, message: 'حدث خطأ ما'),
+  DataSource.defaultError: const ApiErrorModel(
+    code: -8,
+    message: 'Something went wrong',
+  ),
 
   // Add your custom errors here
 };
