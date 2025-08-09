@@ -46,7 +46,7 @@ flutter doctor
 flutter pub get
 ```
 
-4) Generate JSON code
+4) Generate JSON code (required before first run)
 ```powershell
 dart run build_runner build --delete-conflicting-outputs
 ```
@@ -70,6 +70,11 @@ flutter run
 flutter test
 ```
 
+- Analyze (lint)
+```powershell
+flutter analyze
+```
+
 ## Features
 
 - Recipes grid with skeleton loading states
@@ -81,7 +86,7 @@ flutter test
 ## Architecture (high level)
 
 - Core: routing, DI, networking (Dio), theming, shared widgets/utilities
-- Feature modules: data (models, mappers, remote), domain (entities, use cases, repo interfaces), presentation (Cubits, UI)
+- Feature modules: data (DTOs, mappers, remote), domain (entities, use cases, repo interfaces), presentation (Cubits, UI)
 
 ## Project structure
 
