@@ -5,7 +5,7 @@ import '../../../core/theming/app_sizer.dart';
 import '../../../core/theming/text_styles.dart';
 import '../../../core/widgets/app_image.dart';
 import '../../../core/widgets/app_text.dart';
-import '../../../data/model/recipe.dart';
+import '../../data/models/item.dart';
 
 class CreatorSection extends StatelessWidget {
   final Item item;

@@ -6,7 +6,7 @@ import '../../../../core/theming/text_styles.dart';
 import '../../../../core/widgets/app_image.dart';
 import '../../../../core/widgets/app_text.dart';
 import '../../../../core/widgets/dotted_divider.dart';
-import '../../../../data/model/detailed_item.dart' as model;
+import '../../../data/models/detailed_item.dart' as model;
 
 class StepsSection extends StatelessWidget {
   final List<model.Step> steps;

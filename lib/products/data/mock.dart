@@ -1,7 +1,7 @@
-import '../../data/model/api_response.dart';
-import '../../data/model/category.dart';
-import '../../data/model/detailed_item.dart';
-import '../../data/model/recipe.dart';
+import '../../core/models/api_response.dart';
+import 'models/category.dart';
+import 'models/detailed_item.dart';
+import 'models/item.dart';
 
 final categories =
     ApiResponse.fromJson(
@@ -387,7 +387,7 @@ final items =
         "pageSize": 20,
       },
       "error": null,
-    }, (data) => Recipe.fromJson(data)).data.items;
+    }, (data) => PaginatedItems.fromJson(data)).data.items;
 
 final detailedItem =
     ApiResponse.fromJson({

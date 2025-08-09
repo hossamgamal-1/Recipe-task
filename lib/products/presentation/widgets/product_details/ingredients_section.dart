@@ -4,7 +4,7 @@ import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/app_sizer.dart';
 import '../../../../core/theming/text_styles.dart';
 import '../../../../core/widgets/app_text.dart';
-import '../../../../data/model/detailed_item.dart';
+import '../../../data/models/detailed_item.dart';
 import 'ingredient_card.dart';
 
 class IngredientsSection extends StatelessWidget {

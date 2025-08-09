@@ -1,26 +1,28 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'recipe.dart';
+part of 'item.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Recipe _$RecipeFromJson(Map<String, dynamic> json) => Recipe(
-  json['hasMore'] as bool,
-  (json['items'] as List<dynamic>).map(Item.fromJson).toList(),
-  json['total'] as num,
-  json['pageNumber'] as num,
-  json['pageSize'] as num,
-);
+PaginatedItems _$PaginatedItemsFromJson(Map<String, dynamic> json) =>
+    PaginatedItems(
+      json['hasMore'] as bool,
+      (json['items'] as List<dynamic>).map(Item.fromJson).toList(),
+      json['total'] as num,
+      json['pageNumber'] as num,
+      json['pageSize'] as num,
+    );
 
-Map<String, dynamic> _$RecipeToJson(Recipe instance) => <String, dynamic>{
-  'hasMore': instance.hasMore,
-  'items': instance.items,
-  'total': instance.total,
-  'pageNumber': instance.pageNumber,
-  'pageSize': instance.pageSize,
-};
+Map<String, dynamic> _$PaginatedItemsToJson(PaginatedItems instance) =>
+    <String, dynamic>{
+      'hasMore': instance.hasMore,
+      'items': instance.items,
+      'total': instance.total,
+      'pageNumber': instance.pageNumber,
+      'pageSize': instance.pageSize,
+    };
 
 Item _$ItemFromJson(Map<String, dynamic> json) => Item(
   (json['id'] as num).toInt(),

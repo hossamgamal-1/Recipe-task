@@ -4,7 +4,7 @@ import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/app_sizer.dart';
 import '../../../../core/utils/hero_tag_helper.dart';
 import '../../../../core/widgets/app_image.dart';
-import '../../../../data/model/recipe.dart';
+import '../../../data/models/item.dart';
 import '../spotlight_section.dart';
 import '../time_section.dart';
 

@@ -1,20 +1,27 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'recipe.g.dart';
+part 'item.g.dart';
 
 @JsonSerializable()
-class Recipe {
+class PaginatedItems {
   final bool hasMore;
   final List<Item> items;
   final num total;
   final num pageNumber;
   final num pageSize;
 
-  Recipe(this.hasMore, this.items, this.total, this.pageNumber, this.pageSize);
+  const PaginatedItems(
+    this.hasMore,
+    this.items,
+    this.total,
+    this.pageNumber,
+    this.pageSize,
+  );
 
-  factory Recipe.fromJson(dynamic json) => _$RecipeFromJson(json);
+  factory PaginatedItems.fromJson(dynamic json) =>
+      _$PaginatedItemsFromJson(json);
 
-  Map<String, dynamic> toJson() => _$RecipeToJson(this);
+  Map<String, dynamic> toJson() => _$PaginatedItemsToJson(this);
 }
 
 @JsonSerializable()
@@ -24,7 +31,7 @@ class Item {
   final String image;
   final bool isFeatured;
   final String? creatorLink;
-  final dynamic description;
+  final String? description;
   final String? creatorName;
   final String? creatorImage;
   final AdditionalInfo additionalInfo;

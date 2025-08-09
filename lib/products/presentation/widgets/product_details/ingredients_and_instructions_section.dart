@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/theming/app_sizer.dart';
 import '../../../../core/utils/event_bus.dart';
 import '../../../../core/widgets/custom_inkwell.dart';
-import '../../../../data/model/detailed_item.dart';
+import '../../../data/models/detailed_item.dart';
 import '../../events/ingredients_mode_changed.dart';
 import 'ingredients_section.dart';
 import 'specification_chip.dart';

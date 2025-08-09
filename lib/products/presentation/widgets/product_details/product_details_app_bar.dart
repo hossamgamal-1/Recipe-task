@@ -8,7 +8,7 @@ import '../../../../core/utils/hero_tag_helper.dart';
 import '../../../../core/widgets/app_image.dart';
 import '../../../../core/widgets/app_text.dart';
 import '../../../../core/widgets/custom_inkwell.dart';
-import '../../../../data/model/detailed_item.dart';
+import '../../../data/models/detailed_item.dart';
 
 class ProductDetailsAppBar extends StatefulWidget {
   final DetailedItem item;

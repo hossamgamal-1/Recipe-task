@@ -5,7 +5,7 @@ import '../../../../core/theming/text_styles.dart';
 import '../../../../core/widgets/app_card.dart';
 import '../../../../core/widgets/app_text.dart';
 import '../../../../core/widgets/custom_inkwell.dart';
-import '../../../../data/model/recipe.dart';
+import '../../../data/models/item.dart';
 import '../../screens/product_details_screen.dart';
 import '../creator_section.dart';
 import 'product_card_image.dart';

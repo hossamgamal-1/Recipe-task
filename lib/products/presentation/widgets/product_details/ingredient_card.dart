@@ -5,7 +5,7 @@ import '../../../../core/theming/app_sizer.dart';
 import '../../../../core/theming/text_styles.dart';
 import '../../../../core/widgets/app_image.dart';
 import '../../../../core/widgets/app_text.dart';
-import '../../../../data/model/detailed_item.dart';
+import '../../../data/models/detailed_item.dart';
 
 class IngredientCard extends StatelessWidget {
   final Ingredient ingredient;

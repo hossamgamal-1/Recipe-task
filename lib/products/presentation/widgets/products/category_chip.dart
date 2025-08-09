@@ -4,7 +4,7 @@ import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/app_sizer.dart';
 import '../../../../core/theming/text_styles.dart';
 import '../../../../core/widgets/app_text.dart';
-import '../../../../data/model/category.dart';
+import '../../../data/models/category.dart';
 
 class CategoryChip extends StatelessWidget {
   final bool isAll;
