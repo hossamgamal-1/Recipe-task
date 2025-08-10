@@ -35,10 +35,12 @@ class _RecipeDetailsAppBarState extends State<RecipeDetailsAppBar> {
   final expandedHeight = 270.h;
   void _handleScroll() {
     if (!widget.scrollController.hasClients) return;
+
     // a bit before fully collapsed
     final threshold = expandedHeight - MediaQuery.of(context).padding.top;
     final shouldCollapse = widget.scrollController.offset > threshold - 30.w;
     final shouldHalfCollapse = widget.scrollController.offset > threshold / 2;
+
     if (shouldCollapse != _collapsed || shouldHalfCollapse != _halfCollapsed) {
       setState(() {
         _collapsed = shouldCollapse;
@@ -67,7 +69,7 @@ class _RecipeDetailsAppBarState extends State<RecipeDetailsAppBar> {
         duration: const Duration(milliseconds: 120),
         child: AppText(
           widget.detailedRecipe.name,
-          style: TextStyles.font16SemiBoldBlack,
+          style: TextStyles.font14MediumBlack,
         ),
       ),
       leading: Padding(
@@ -95,7 +97,7 @@ class _RecipeDetailsAppBarState extends State<RecipeDetailsAppBar> {
         collapseMode: CollapseMode.none,
         background: Stack(
           fit: StackFit.expand,
-          alignment: const Alignment(0, 0),
+          alignment: Alignment.center,
           children: [
             AppImage(widget.detailedRecipe.image, fit: BoxFit.cover),
             if (widget.detailedRecipe.videoLink != null)

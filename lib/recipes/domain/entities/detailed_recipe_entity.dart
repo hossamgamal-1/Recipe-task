@@ -5,14 +5,14 @@ class DetailedRecipeEntity {
   final String name;
   final String image;
   final bool isFeatured;
+  final int timeMinutes;
   final String? videoLink;
   final String? creatorLink;
   final String? description;
   final String? creatorName;
   final String? creatorImage;
-  final int timeMinutes;
-  final List<IngredientEntity> ingredients;
   final List<StepEntity> steps;
+  final List<IngredientEntity> ingredients;
 
   const DetailedRecipeEntity({
     required this.id,

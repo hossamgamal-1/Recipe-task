@@ -5,11 +5,11 @@ class RecipeEntity {
   final String name;
   final String image;
   final bool isFeatured;
+  final int timeMinutes;
   final String? creatorLink;
   final String? description;
   final String? creatorName;
   final String? creatorImage;
-  final int timeMinutes;
 
   const RecipeEntity({
     required this.id,

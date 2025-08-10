@@ -6,6 +6,7 @@ class GetRecipeDetailsUseCase {
   final RecipesRepository _repo;
   const GetRecipeDetailsUseCase(this._repo);
 
-  Future<ApiResult<DetailedRecipeEntity>> call(int productId) =>
-      _repo.getRecipeDetails(productId: productId);
+  Future<ApiResult<DetailedRecipeEntity>> call(int recipeId) {
+    return _repo.getRecipeDetails(recipeId: recipeId);
+  }
 }

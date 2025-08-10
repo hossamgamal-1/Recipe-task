@@ -24,10 +24,8 @@ class RecipesCubit extends Cubit<RecipesState> {
     final response = await _getRecipes.loadNext(refresh: refresh);
 
     switch (response) {
-      case SuccessResult():
-        emit(
-          RecipesLoaded(recipes: response.data, hasMore: _getRecipes.hasMore),
-        );
+      case SuccessResult(:final data):
+        emit(RecipesLoaded(recipes: data, hasMore: _getRecipes.hasMore));
       case FailureResult():
         emit(RecipesError(response.errorMessage));
     }

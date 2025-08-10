@@ -26,7 +26,7 @@ class PaginatedList<T> {
   Map<String, dynamic> toJson(Object? Function(T value) toJsonT) =>
       _$PaginatedListToJson(this, toJsonT);
 
-  PaginatedList<L> copyWith<L>({List<L>? items}) {
+  PaginatedList<L> copyWith<L>({required List<L>? items}) {
     return PaginatedList(
       items: items ?? [],
       total: total,

@@ -13,6 +13,6 @@ abstract class RecipesRepository {
   });
 
   Future<ApiResult<DetailedRecipeEntity>> getRecipeDetails({
-    required int productId,
+    required int recipeId,
   });
 }

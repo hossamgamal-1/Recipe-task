@@ -11,7 +11,7 @@ import '../models/recipe.dart';
 abstract class RecipesRemoteDataSource {
   Future<ApiResponse<List<Category>>> fetchCategories();
   Future<ApiResponse<PaginatedList<Recipe>>> fetchRecipes(PaginationDto dto);
-  Future<ApiResponse<DetailedRecipe>> fetchRecipeDetails(int productId);
+  Future<ApiResponse<DetailedRecipe>> fetchRecipeDetails(int recipeId);
 }
 
 class RecipesRemoteDataSourceImpl implements RecipesRemoteDataSource {
@@ -26,7 +26,7 @@ class RecipesRemoteDataSourceImpl implements RecipesRemoteDataSource {
 
     return ApiResponse.fromJson(
       response.data,
-      (json) => (json as List).map((e) => Category.fromJson(e)).toList(),
+      (json) => (json as List? ?? []).map((e) => Category.fromJson(e)).toList(),
     );
   }
 
@@ -51,11 +51,11 @@ class RecipesRemoteDataSourceImpl implements RecipesRemoteDataSource {
   }
 
   @override
-  Future<ApiResponse<DetailedRecipe>> fetchRecipeDetails(int productId) async {
+  Future<ApiResponse<DetailedRecipe>> fetchRecipeDetails(int recipeId) async {
     final response = await _dioHelper.getData(
       ApiRequestModel(
         endPoint: ApiConstants.getRecipeDetailsEP,
-        queries: {'id': productId},
+        queries: {'id': recipeId},
       ),
     );
 

@@ -125,7 +125,7 @@ void main() {
       );
 
       // Act
-      final result = await repo.getRecipeDetails(productId: 1);
+      final result = await repo.getRecipeDetails(recipeId: 1);
 
       // Assert
       expect(result, isA<SuccessResult<DetailedRecipeEntity>>());
@@ -140,7 +140,7 @@ void main() {
       ).thenThrow(Exception('API error'));
 
       // Act
-      final result = await repo.getRecipeDetails(productId: 2);
+      final result = await repo.getRecipeDetails(recipeId: 2);
 
       // Assert
       expect(result, isA<FailureResult<DetailedRecipeEntity>>());

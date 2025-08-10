@@ -75,7 +75,6 @@ class IngredientCard extends StatelessWidget {
   }
 
   String _quantityLabel(ProductEntity product) {
-    // We only have quantity in the model; units are not present. Fallback to simple format.
     return '1 x ${product.unitValue} ${product.unit}';
   }
 }

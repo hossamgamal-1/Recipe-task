@@ -49,7 +49,6 @@ class _AddIngredientsToCartTileState extends State<AddIngredientsToCartTile> {
       child: Row(
         children: [
           SizedBox(width: 25.w),
-
           Container(
             height: 50.h,
             decoration: BoxDecoration(

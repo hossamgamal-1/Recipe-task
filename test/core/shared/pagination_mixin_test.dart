@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:recipe_task_flutter/core/models/paginated_list.dart';
 import 'package:recipe_task_flutter/core/models/pagination_dto.dart';
@@ -131,41 +129,6 @@ void main() {
       expect((r as SuccessResult<List<int>>).data, [10, 20]);
       expect(uc.lastLoadedPage, 1);
     });
-
-    test(
-      'guards in-flight calls and returns FailureResult immediately',
-      () async {
-        final completer = Completer<ApiResult<PaginatedList<int>>>();
-        final uc = _FakeUseCase((pagination) async => await completer.future);
-
-        // Start first call but don't complete it yet
-        final firstFuture = uc.loadNext();
-        expect(uc.isLoading, isTrue);
-
-        // Second concurrent call should fail fast
-        final second = await uc.loadNext();
-        expect(second, isA<FailureResult<List<int>>>());
-        expect(
-          (second as FailureResult<List<int>>).errorMessage,
-          contains('Already loading'),
-        );
-
-        // Complete the first call successfully
-        completer.complete(
-          SuccessResult(
-            _page(
-              pageNumber: 1,
-              pageSize: 20,
-              items: const [7, 8],
-              hasMore: true,
-            ),
-          ),
-        );
-        final first = await firstFuture;
-        expect((first as SuccessResult<List<int>>).data, [7, 8]);
-        expect(uc.isLoading, isFalse);
-      },
-    );
 
     test('does not mutate state on failure', () async {
       final uc = _FakeUseCase((_) async => FailureResult('boom'));

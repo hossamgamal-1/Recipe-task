@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/theming/app_colors.dart';
+import '../../../core/widgets/retry_tile.dart';
 import '../bloc/recipe_details_cubit/recipe_details_cubit.dart';
 import '../widgets/recipe_details/recipe_details_content.dart';
 import '../widgets/recipe_details/recipe_details_skeleton_content.dart';
 
 class RecipeDetailsScreen extends StatefulWidget {
-  final int productId;
-  const RecipeDetailsScreen({super.key, required this.productId});
+  final int recipeId;
+  const RecipeDetailsScreen({super.key, required this.recipeId});
 
   @override
   State<RecipeDetailsScreen> createState() => _RecipeDetailsScreenState();
@@ -32,25 +33,17 @@ class _RecipeDetailsScreenState extends State<RecipeDetailsScreen> {
           return switch (state) {
             RecipeDetailsInitial() => const SizedBox.shrink(),
             RecipeDetailsLoading() => const RecipeDetailsSkeletonContent(),
+
             RecipeDetailsLoaded() => RecipeDetailsContent(
               detailedRecipe: state.details,
               scrollController: _scrollController,
             ),
-            RecipeDetailsError(:final message) => Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(message),
-                  const SizedBox(height: 12),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Attempt retry with the last used id if available via route args
-                      context.read<RecipeDetailsCubit>().load(widget.productId);
-                    },
-                    child: const Text('Retry'),
-                  ),
-                ],
-              ),
+
+            RecipeDetailsError(:final message) => RetryTile(
+              errorMessage: message,
+              retryMethod: () {
+                context.read<RecipeDetailsCubit>().load(widget.recipeId);
+              },
             ),
           };
         },

@@ -26,7 +26,7 @@ class AppRouter {
 
       AppRoutes.recipeDetails => BlocProvider(
         create: (_) => RecipeDetailsCubit(getIt())..load(arg),
-        child: RecipeDetailsScreen(productId: arg as int),
+        child: RecipeDetailsScreen(recipeId: arg as int),
       ),
 
       _ => Scaffold(

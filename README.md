@@ -14,6 +14,9 @@ A simple, cleanly-structured Flutter app that lists recipes, shows categories, a
 	<a href="https://flutter.dev"><img src="https://img.shields.io/badge/Flutter-%20-02569B?logo=flutter&logoColor=white" alt="Flutter"></a>
 </p>
 
+## 🎥 Video [Watch Demo Video]
+
+
 ## Table of Contents
 
 - Setup
@@ -31,6 +34,8 @@ A simple, cleanly-structured Flutter app that lists recipes, shows categories, a
 If it’s your first time on this machine:
 
 1) Verify Flutter and Dart (Dart >= 3.7)
+
+Note: If your Dart SDK is >= 3.5 you can run the iOS app by editing pubspec.yaml. Android may not run due to breaking changes from the Groovy -> Kotlin (KTS) migration.
 ```powershell
 flutter --version
 dart --version
@@ -55,8 +60,6 @@ dart run build_runner build --delete-conflicting-outputs
 ```powershell
 flutter run
 ```
-
-For more details and troubleshooting, see: [docs/user.md#setup](docs/user.md#setup)
 
 ## Run and common tasks
 

@@ -24,10 +24,10 @@ class RecipesRepositoryImpl implements RecipesRepository {
 
   @override
   Future<ApiResult<DetailedRecipeEntity>> getRecipeDetails({
-    required int productId,
+    required int recipeId,
   }) {
     return ApiResult.handle(
-      () => _remote.fetchRecipeDetails(productId),
+      () => _remote.fetchRecipeDetails(recipeId),
       (data) => data.toEntity(),
     );
   }
