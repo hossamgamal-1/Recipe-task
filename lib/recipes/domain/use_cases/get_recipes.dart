@@ -1,13 +1,16 @@
+import '../../../core/models/paginated_list.dart';
+import '../../../core/models/pagination_dto.dart';
 import '../../../core/networking/api_result.dart';
+import '../../../core/shared/pagination_mixin.dart';
 import '../entities/recipe_entity.dart';
 import '../repositories/recipes_repository.dart';
 
-class GetRecipesUseCase {
+class GetRecipesUseCase with PaginationMixin<RecipeEntity> {
   final RecipesRepository _repo;
-  const GetRecipesUseCase(this._repo);
+  GetRecipesUseCase(this._repo);
 
-  Future<ApiResult<List<RecipeEntity>>> call({
-    int pageNumber = 1,
-    int pageSize = 20,
-  }) => _repo.getRecipes(pageNumber: pageNumber, pageSize: pageSize);
+  @override
+  Future<ApiResult<PaginatedList<RecipeEntity>>> call(PaginationDto dto) {
+    return _repo.getRecipes(dto: dto);
+  }
 }

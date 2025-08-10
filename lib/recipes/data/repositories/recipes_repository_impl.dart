@@ -1,3 +1,5 @@
+import '../../../core/models/paginated_list.dart';
+import '../../../core/models/pagination_dto.dart';
 import '../../../core/networking/api_result.dart';
 import '../../domain/entities/category_entity.dart';
 import '../../domain/entities/detailed_recipe_entity.dart';
@@ -31,13 +33,15 @@ class RecipesRepositoryImpl implements RecipesRepository {
   }
 
   @override
-  Future<ApiResult<List<RecipeEntity>>> getRecipes({
-    required int pageNumber,
-    required int pageSize,
-  }) async {
-    return ApiResult.handle(
-      () => _remote.fetchRecipes(pageNumber: pageNumber, pageSize: pageSize),
-      (data) => data.items.map((e) => e.toEntity()).toList(),
-    );
+  Future<ApiResult<PaginatedList<RecipeEntity>>> getRecipes({
+    required PaginationDto dto,
+  }) {
+    return ApiResult.handle(() => _remote.fetchRecipes(dto), (paginatedList) {
+      // convert model to entity
+      final entities = paginatedList.items.map((e) => e.toEntity()).toList();
+
+      // update paginated list with new items
+      return paginatedList.copyWith(items: entities);
+    });
   }
 }

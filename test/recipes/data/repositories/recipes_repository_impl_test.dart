@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:recipe_task_flutter/core/models/api_response.dart';
 import 'package:recipe_task_flutter/core/models/paginated_list.dart';
+import 'package:recipe_task_flutter/core/models/pagination_dto.dart';
 import 'package:recipe_task_flutter/core/networking/api_result.dart';
 import 'package:recipe_task_flutter/recipes/data/data_sources/recipes_remote_data_source.dart';
 import 'package:recipe_task_flutter/recipes/data/models/category.dart';
@@ -29,34 +30,50 @@ void main() {
     test('returns SuccessResult with mapped items', () async {
       // Arrange
       final recipe = _getRecipe();
-      final page = PaginatedList<Recipe>(true, [recipe], 1, 1, 20);
-      when(() => remote.fetchRecipes(pageNumber: 1, pageSize: 20)).thenAnswer(
+      final page = PaginatedList<Recipe>(
+        items: [recipe],
+        total: 1,
+        hasMore: true,
+        pageSize: 20,
+        pageNumber: 1,
+      );
+      when(
+        () => remote.fetchRecipes(
+          const PaginationDto(pageNumber: 1, pageSize: 20),
+        ),
+      ).thenAnswer(
         (_) async => ApiResponse<PaginatedList<Recipe>>(true, page, null),
       );
 
       // Act
-      final result = await repo.getRecipes(pageNumber: 1, pageSize: 20);
+      final result = await repo.getRecipes(
+        dto: const PaginationDto(pageNumber: 1, pageSize: 20),
+      );
 
       // Assert
-      expect(result, isA<SuccessResult<List<RecipeEntity>>>());
-      final data = (result as SuccessResult<List<RecipeEntity>>).data;
-      expect(data.length, 1);
-      expect(data.first.name, 'Name');
+      expect(result, isA<SuccessResult<PaginatedList<RecipeEntity>>>());
+      final data = (result as SuccessResult<PaginatedList<RecipeEntity>>).data;
+      expect(data.items.length, 1);
+      expect(data.items.first.name, 'Name');
     });
 
     test('returns FailureResult on exception', () async {
       // Arrange
       when(
-        () => remote.fetchRecipes(pageNumber: 1, pageSize: 20),
+        () => remote.fetchRecipes(
+          const PaginationDto(pageNumber: 1, pageSize: 20),
+        ),
       ).thenThrow(Exception('network'));
 
       // Act
-      final result = await repo.getRecipes(pageNumber: 1, pageSize: 20);
+      final result = await repo.getRecipes(
+        dto: const PaginationDto(pageNumber: 1, pageSize: 20),
+      );
 
       // Assert
-      expect(result, isA<FailureResult<List<RecipeEntity>>>());
+      expect(result, isA<FailureResult<PaginatedList<RecipeEntity>>>());
       expect(
-        (result as FailureResult<List<RecipeEntity>>).errorMessage,
+        (result as FailureResult<PaginatedList<RecipeEntity>>).errorMessage,
         isNotEmpty,
       );
     });

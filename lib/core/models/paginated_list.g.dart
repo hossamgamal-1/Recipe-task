@@ -10,11 +10,11 @@ PaginatedList<T> _$PaginatedListFromJson<T>(
   Map<String, dynamic> json,
   T Function(Object? json) fromJsonT,
 ) => PaginatedList<T>(
-  json['hasMore'] as bool,
-  (json['items'] as List<dynamic>).map(fromJsonT).toList(),
-  json['total'] as num,
-  json['pageNumber'] as num,
-  json['pageSize'] as num,
+  items: (json['items'] as List<dynamic>).map(fromJsonT).toList(),
+  total: (json['total'] as num).toInt(),
+  hasMore: json['hasMore'] as bool,
+  pageSize: (json['pageSize'] as num).toInt(),
+  pageNumber: (json['pageNumber'] as num).toInt(),
 );
 
 Map<String, dynamic> _$PaginatedListToJson<T>(
@@ -22,8 +22,8 @@ Map<String, dynamic> _$PaginatedListToJson<T>(
   Object? Function(T value) toJsonT,
 ) => <String, dynamic>{
   'hasMore': instance.hasMore,
-  'items': instance.items.map(toJsonT).toList(),
   'total': instance.total,
-  'pageNumber': instance.pageNumber,
   'pageSize': instance.pageSize,
+  'pageNumber': instance.pageNumber,
+  'items': instance.items.map(toJsonT).toList(),
 };

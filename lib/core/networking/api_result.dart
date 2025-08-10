@@ -9,6 +9,7 @@ ConnectionCheck connectionCheck =
     () => InternetConnectionChecker().hasConnection;
 
 sealed class ApiResult<T> {
+  /// Handles API calls Exceptions and maps the result.
   static Future<ApiResult<L>> handle<T, L>(
     Future<ApiResponse<T>> Function() apiCall,
     L Function(T) onSuccess,

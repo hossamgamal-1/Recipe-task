@@ -1,5 +1,6 @@
 import '../../../core/models/api_response.dart';
 import '../../../core/models/paginated_list.dart';
+import '../../../core/models/pagination_dto.dart';
 import '../../../core/networking/api_constants.dart';
 import '../../../core/networking/api_request_model.dart';
 import '../../../core/networking/dio_helper.dart';
@@ -9,10 +10,7 @@ import '../models/recipe.dart';
 
 abstract class RecipesRemoteDataSource {
   Future<ApiResponse<List<Category>>> fetchCategories();
-  Future<ApiResponse<PaginatedList<Recipe>>> fetchRecipes({
-    required int pageNumber,
-    required int pageSize,
-  });
+  Future<ApiResponse<PaginatedList<Recipe>>> fetchRecipes(PaginationDto dto);
   Future<ApiResponse<DetailedRecipe>> fetchRecipeDetails(int productId);
 }
 
@@ -33,14 +31,13 @@ class RecipesRemoteDataSourceImpl implements RecipesRemoteDataSource {
   }
 
   @override
-  Future<ApiResponse<PaginatedList<Recipe>>> fetchRecipes({
-    required int pageNumber,
-    required int pageSize,
-  }) async {
+  Future<ApiResponse<PaginatedList<Recipe>>> fetchRecipes(
+    PaginationDto dto,
+  ) async {
     final response = await _dioHelper.getData(
       ApiRequestModel(
         endPoint: ApiConstants.getRecipesEP,
-        queries: {'pageNumber': pageNumber, 'pageSize': pageSize},
+        queries: dto.toJson(),
       ),
     );
 
