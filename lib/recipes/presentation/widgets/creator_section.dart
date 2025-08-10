@@ -38,11 +38,8 @@ class CreatorSection extends StatelessWidget {
           width: 30.w,
           height: 30.w,
           clipBehavior: Clip.antiAlias,
-          decoration: BoxDecoration(
-            color: AppColors.gray,
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: AppImage(creatorImage!, fit: BoxFit.cover),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
+          child: AppImage(creatorImage!, fit: BoxFit.contain),
         ),
         SizedBox(width: 8.w),
         Expanded(

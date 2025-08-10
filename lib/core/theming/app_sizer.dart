@@ -1,5 +1,17 @@
 import 'package:flutter/material.dart';
 
+/// Wrap your material app with this widget to ensure proper sizing
+class AppSizerInitializer extends StatelessWidget {
+  final Widget child;
+  const AppSizerInitializer({super.key, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    AppSizer._initialize(context);
+    return child;
+  }
+}
+
 class AppSizer {
   // Change the default size to your design screen size
   static const _defaultSize = Size(393, 852);
@@ -10,7 +22,7 @@ class AppSizer {
   static late double _scaleText;
   static late double _textScaleFactor;
 
-  AppSizer.initialize(this._context) {
+  AppSizer._initialize(this._context) {
     final size = MediaQuery.sizeOf(_context);
     _screenWidth = size.width;
     _screenHeight = size.height;

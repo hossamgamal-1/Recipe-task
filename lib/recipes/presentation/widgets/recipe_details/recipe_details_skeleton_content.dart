@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/app_sizer.dart';
 import '../../../../core/theming/text_styles.dart';
-import '../../../../core/utils/constants.dart';
 import '../../../../core/widgets/app_shimmer.dart';
 import '../../../../core/widgets/app_text.dart';
 import '../../../domain/entities/detailed_recipe_entity.dart';
@@ -15,19 +14,7 @@ import 'recipe_details_skeleton_app_bar.dart';
 class RecipeDetailsSkeletonContent extends StatelessWidget {
   final DetailedRecipeEntity item;
   const RecipeDetailsSkeletonContent({super.key})
-    : item = const DetailedRecipeEntity(
-        id: 0,
-        name: 'name',
-        image: Constants.placeholder,
-        isFeatured: false,
-        creatorLink: null,
-        description: 'description',
-        creatorName: 'creatorName',
-        creatorImage: Constants.placeholder,
-        timeMinutes: 80,
-        ingredients: [],
-        steps: [],
-      );
+    : item = DetailedRecipeEntity.mock;
 
   @override
   Widget build(BuildContext context) {

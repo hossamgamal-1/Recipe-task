@@ -1,8 +1,11 @@
+import '../../../core/utils/constants.dart';
+
 class DetailedRecipeEntity {
   final int id;
   final String name;
   final String image;
   final bool isFeatured;
+  final String? videoLink;
   final String? creatorLink;
   final String? description;
   final String? creatorName;
@@ -15,6 +18,8 @@ class DetailedRecipeEntity {
     required this.id,
     required this.name,
     required this.image,
+    required this.steps,
+    required this.videoLink,
     required this.isFeatured,
     required this.creatorLink,
     required this.description,
@@ -22,8 +27,25 @@ class DetailedRecipeEntity {
     required this.creatorImage,
     required this.timeMinutes,
     required this.ingredients,
-    required this.steps,
   });
+
+  int get inStockItemsCount =>
+      ingredients.where((x) => x.product.inStock).length;
+
+  static const mock = DetailedRecipeEntity(
+    id: 0,
+    name: 'name',
+    image: Constants.placeholder,
+    isFeatured: false,
+    creatorLink: null,
+    description: 'description',
+    creatorName: 'creatorName',
+    creatorImage: Constants.placeholder,
+    timeMinutes: 80,
+    ingredients: [],
+    steps: [],
+    videoLink: null,
+  );
 }
 
 class IngredientEntity {

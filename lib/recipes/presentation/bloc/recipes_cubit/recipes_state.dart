@@ -25,6 +25,6 @@ class RecipesLoaded extends RecipesState {
 }
 
 class RecipesError extends RecipesState {
-  final String message;
-  const RecipesError(this.message);
+  final String errorMessage;
+  const RecipesError(this.errorMessage);
 }

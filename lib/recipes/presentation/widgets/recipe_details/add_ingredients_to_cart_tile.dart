@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/app_sizer.dart';
 import '../../../../core/theming/text_styles.dart';
+import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/event_bus.dart';
+import '../../../../core/widgets/app_image.dart';
 import '../../../../core/widgets/app_text.dart';
 import '../../events/ingredients_mode_changed.dart';
 
@@ -100,10 +102,10 @@ class _AddIngredientsToCartTileState extends State<AddIngredientsToCartTile> {
             ),
             child: Padding(
               padding: EdgeInsets.only(right: 12.w),
-              child: Icon(
-                Icons.shopping_basket_outlined,
+              child: AppImage(
+                AppAssets.basket,
                 color: AppColors.limeYellow,
-                size: 24.w,
+                width: 24.w,
               ),
             ),
           ),

@@ -80,10 +80,7 @@ class RecipeDetailsContent extends StatelessWidget {
             ),
           ],
         ),
-        AddIngredientsToCartTile(
-          count:
-              detailedRecipe.ingredients.where((x) => x.product.inStock).length,
-        ),
+        AddIngredientsToCartTile(count: detailedRecipe.inStockItemsCount),
       ],
     );
   }

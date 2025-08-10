@@ -37,7 +37,7 @@ class _RecipeDetailsAppBarState extends State<RecipeDetailsAppBar> {
     if (!widget.scrollController.hasClients) return;
     // a bit before fully collapsed
     final threshold = expandedHeight - MediaQuery.of(context).padding.top;
-    final shouldCollapse = widget.scrollController.offset > threshold;
+    final shouldCollapse = widget.scrollController.offset > threshold - 30.w;
     final shouldHalfCollapse = widget.scrollController.offset > threshold / 2;
     if (shouldCollapse != _collapsed || shouldHalfCollapse != _halfCollapsed) {
       setState(() {
@@ -76,7 +76,7 @@ class _RecipeDetailsAppBarState extends State<RecipeDetailsAppBar> {
           child: Icon(
             Icons.arrow_back_ios_new_rounded,
             size: 20.w,
-            color: _collapsed ? AppColors.darkGreen : AppColors.black,
+            color: _collapsed ? AppColors.darkGreen : AppColors.white,
           ),
           onTap: () => Navigator.of(context).maybePop(),
         ),
@@ -84,11 +84,11 @@ class _RecipeDetailsAppBarState extends State<RecipeDetailsAppBar> {
       actions: [
         AppImage(
           AppAssets.upload,
-          width: 20.w,
-          height: 20.w,
-          color: _collapsed ? AppColors.darkGreen : AppColors.black,
+          width: 30.w,
+          height: 30.w,
+          color: _collapsed ? AppColors.darkGreen : AppColors.white,
         ),
-        SizedBox(width: 12.w),
+        SizedBox(width: 30.w),
       ],
       flexibleSpace: FlexibleSpaceBar(
         centerTitle: false,
@@ -98,8 +98,18 @@ class _RecipeDetailsAppBarState extends State<RecipeDetailsAppBar> {
           alignment: const Alignment(0, 0),
           children: [
             AppImage(widget.detailedRecipe.image, fit: BoxFit.cover),
-            //TODO: Fix this
-            // Play button removed (no video info in entity)
+            if (widget.detailedRecipe.videoLink != null)
+              Center(
+                child: AnimatedOpacity(
+                  opacity: _halfCollapsed ? 0 : 1,
+                  duration: const Duration(milliseconds: 200),
+                  child: Icon(
+                    Icons.play_arrow_rounded,
+                    size: 96.w,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
           ],
         ),
       ),

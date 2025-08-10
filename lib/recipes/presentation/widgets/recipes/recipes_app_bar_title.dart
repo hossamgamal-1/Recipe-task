@@ -14,9 +14,13 @@ class RecipesAppBarTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        AppImage(AppAssets.logo, width: 50.w, fit: BoxFit.cover),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(25.w),
+          child: AppImage(AppAssets.logo, width: 50.w, fit: BoxFit.cover),
+        ),
         SizedBox(width: 12.w),
         Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             AppText('Rabbit Recipes', style: TextStyles.font24BlackDarkGreen),

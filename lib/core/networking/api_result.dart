@@ -20,11 +20,11 @@ sealed class ApiResult<T> {
 
       final response = await apiCall();
 
-      if (!response.success) {
+      if (!response.success || response.data == null) {
         return FailureResult(response.error?.toString() ?? 'Unknown error');
       }
 
-      return SuccessResult(onSuccess(response.data));
+      return SuccessResult(onSuccess(response.data as T));
     } catch (e) {
       return FailureResult(e);
     }

@@ -1,3 +1,5 @@
+import '../../../core/utils/constants.dart';
+
 class RecipeEntity {
   final int id;
   final String name;
@@ -20,4 +22,16 @@ class RecipeEntity {
     required this.creatorImage,
     required this.timeMinutes,
   });
+
+  static const mock = RecipeEntity(
+    id: 0,
+    name: 'name',
+    image: Constants.placeholder,
+    isFeatured: false,
+    creatorLink: '',
+    description: '',
+    creatorName: 'creatorName',
+    creatorImage: Constants.placeholder,
+    timeMinutes: 80,
+  );
 }

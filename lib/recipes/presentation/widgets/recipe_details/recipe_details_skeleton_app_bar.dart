@@ -18,7 +18,6 @@ class RecipeDetailsSkeletonAppBar extends StatelessWidget {
       surfaceTintColor: AppColors.white,
       backgroundColor: AppColors.white,
       shadowColor: AppColors.lightGray,
-
       leading: Padding(
         padding: EdgeInsets.only(left: 8.w),
         child: CustomInkWell(
@@ -35,7 +34,7 @@ class RecipeDetailsSkeletonAppBar extends StatelessWidget {
         collapseMode: CollapseMode.none,
         background: Stack(
           fit: StackFit.expand,
-          alignment: const Alignment(0, 0),
+          alignment: Alignment.center,
           children: [AppImage(Constants.placeholder, fit: BoxFit.cover)],
         ),
       ),

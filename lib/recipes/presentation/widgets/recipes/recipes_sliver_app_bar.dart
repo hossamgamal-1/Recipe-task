@@ -15,10 +15,10 @@ class RecipesSliverAppBar extends StatelessWidget {
       expandedHeight: 140.h,
       scrolledUnderElevation: 0,
       backgroundColor: AppColors.paleGreen,
-      flexibleSpace: FlexibleSpaceBar(
-        background: Container(color: AppColors.paleGreen),
+      flexibleSpace: Padding(
+        padding: EdgeInsets.only(bottom: 24.h, left: 8.w, right: 8.w),
+        child: const RecipesAppBarTitle(),
       ),
-      title: const RecipesAppBarTitle(),
       bottom: const CategoriesSection(),
     );
   }

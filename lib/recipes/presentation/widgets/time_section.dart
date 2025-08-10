@@ -32,7 +32,7 @@ class TimeSection extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.timer_outlined, size: 16.w, color: AppColors.black),
+            Icon(Icons.access_time, size: 16.w, color: AppColors.black),
             SizedBox(width: 4.w),
             AppText(
               '$time mins',

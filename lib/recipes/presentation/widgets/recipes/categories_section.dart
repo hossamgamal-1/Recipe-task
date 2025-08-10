@@ -23,7 +23,6 @@ class CategoriesSection extends StatelessWidget implements PreferredSizeWidget {
 
           return ListView.builder(
             padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
-            shrinkWrap: true,
             scrollDirection: Axis.horizontal,
             itemCount: categories.length + 1,
             itemBuilder: (context, index) {

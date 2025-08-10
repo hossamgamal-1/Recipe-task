@@ -14,7 +14,6 @@ class CategoriesCubit extends Cubit<CategoriesState> {
     emit(const CategoriesLoading());
 
     final response = await _getCategories();
-
     switch (response) {
       case SuccessResult():
         emit(CategoriesLoaded(response.data));

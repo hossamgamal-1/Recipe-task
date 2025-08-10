@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/theming/app_sizer.dart';
 import '../../../../core/widgets/app_shimmer.dart';
 import '../../../domain/entities/recipe_entity.dart';
 import 'recipe_card.dart';
@@ -14,19 +15,22 @@ class RecipesGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverGrid(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 12,
-        mainAxisSpacing: 12,
-        childAspectRatio: 0.64,
+    return SliverPadding(
+      padding: EdgeInsets.symmetric(horizontal: 8.w),
+      sliver: SliverGrid(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 12,
+          mainAxisSpacing: 12,
+          childAspectRatio: 0.64,
+        ),
+        delegate: SliverChildBuilderDelegate((_, index) {
+          return AppShimmer(
+            enabled: isLoading,
+            child: RecipeCard(recipes[index], key: ValueKey(recipes[index].id)),
+          );
+        }, childCount: recipes.length),
       ),
-      delegate: SliverChildBuilderDelegate((_, index) {
-        return AppShimmer(
-          enabled: isLoading,
-          child: RecipeCard(recipes[index], key: ValueKey(recipes[index].id)),
-        );
-      }, childCount: recipes.length),
     );
   }
 }

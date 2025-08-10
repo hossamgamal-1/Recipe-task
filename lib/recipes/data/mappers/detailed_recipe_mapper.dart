@@ -12,6 +12,7 @@ extension DetailedRecipeMapper on DetailedRecipe {
     creatorName: creatorName,
     creatorImage: creatorImage,
     timeMinutes: additionalInfo.time,
+    videoLink: additionalInfo.videoLink,
     steps: steps.map((e) => e.toEntity()).toList(),
     ingredients: ingredients.map((e) => e.toEntity()).toList(),
   );

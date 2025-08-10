@@ -23,6 +23,10 @@ class ErrorHandler {
       apiErrorModel = ApiErrorModel(message: errorMessage);
       return;
     }
+    if (error is TypeError) {
+      apiErrorModel = DataSource.parsingError.getFailure();
+      return;
+    }
 
     apiErrorModel = DataSource.defaultError.getFailure();
   }

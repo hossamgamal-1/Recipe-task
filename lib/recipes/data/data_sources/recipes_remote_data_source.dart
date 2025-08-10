@@ -10,8 +10,8 @@ import '../models/recipe.dart';
 abstract class RecipesRemoteDataSource {
   Future<ApiResponse<List<Category>>> fetchCategories();
   Future<ApiResponse<PaginatedList<Recipe>>> fetchRecipes({
-    int pageNumber = 1,
-    int pageSize = 20,
+    required int pageNumber,
+    required int pageSize,
   });
   Future<ApiResponse<DetailedRecipe>> fetchRecipeDetails(int productId);
 }
@@ -34,8 +34,8 @@ class RecipesRemoteDataSourceImpl implements RecipesRemoteDataSource {
 
   @override
   Future<ApiResponse<PaginatedList<Recipe>>> fetchRecipes({
-    int pageNumber = 1,
-    int pageSize = 20,
+    required int pageNumber,
+    required int pageSize,
   }) async {
     final response = await _dioHelper.getData(
       ApiRequestModel(

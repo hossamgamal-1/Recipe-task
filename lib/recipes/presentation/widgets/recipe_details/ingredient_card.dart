@@ -29,7 +29,7 @@ class IngredientCard extends StatelessWidget {
             child:
                 product.imageUrl == null
                     ? const SizedBox.shrink()
-                    : AppImage(product.imageUrl!, fit: BoxFit.cover),
+                    : AppImage(product.imageUrl!, fit: BoxFit.contain),
           ),
         ),
         SizedBox(width: 12.w),
