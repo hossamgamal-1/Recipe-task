@@ -3,7 +3,7 @@
 A simple, cleanly-structured Flutter app that lists recipes, shows categories, and displays detailed info for a selected recipe. Built with BLoC (Cubit), Dio, GetIt, and JSON code generation.
 
 ### Project structure
-<p align="center"><img src="assets/images/logo.jpg" alt="Rabbit Recipes" width="120"></p>
+<p align="center"><img src="assets/images/logo.jpg" alt="Rabbit Recipes" width="240"></p>
 
 <h1 align="center">Recipe Task (Flutter)</h1>
 
@@ -13,9 +13,9 @@ A simple, cleanly-structured Flutter app that lists recipes, shows categories, a
 
 https://github.com/user-attachments/assets/475bff55-7014-4cd4-936e-d32157efaea7
 
-<img width="300" height="616" alt="Screenshot_1754815860" src="https://github.com/user-attachments/assets/7afd7538-cb1c-4280-bee1-cdda58ba860f" />
-<img width="300" height="616" alt="Screenshot_1754815907" src="https://github.com/user-attachments/assets/a118013e-1630-4e57-a8ba-af66f6ea88a0" />
-<img width="300" height="616" alt="Screenshot_1754815913" src="https://github.com/user-attachments/assets/6b998fb4-f3e2-4181-80db-279a4bd60537" />
+<img width="280" height="600" alt="Screenshot_1754815860" src="https://github.com/user-attachments/assets/7afd7538-cb1c-4280-bee1-cdda58ba860f" />
+<img width="280" height="600" alt="Screenshot_1754815907" src="https://github.com/user-attachments/assets/a118013e-1630-4e57-a8ba-af66f6ea88a0" />
+<img width="280" height="600" alt="Screenshot_1754815913" src="https://github.com/user-attachments/assets/6b998fb4-f3e2-4181-80db-279a4bd60537" />
 
 ## Table of Contents
 
