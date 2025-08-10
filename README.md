@@ -9,13 +9,9 @@ A simple, cleanly-structured Flutter app that lists recipes, shows categories, a
 
 <p align="center">A clean Flutter app that lists recipes, categories, and details — built with BLoC (Cubit), Dio, GetIt, and JSON codegen.</p>
 
-<p align="center">
-	<a href="https://dart.dev"><img src="https://img.shields.io/badge/Dart-3.7%2B-0175C2?logo=dart&logoColor=white" alt="Dart 3.7+"></a>
-	<a href="https://flutter.dev"><img src="https://img.shields.io/badge/Flutter-%20-02569B?logo=flutter&logoColor=white" alt="Flutter"></a>
-</p>
-
 ## 🎥 Video [Watch Demo Video]
 
+https://github.com/user-attachments/assets/475bff55-7014-4cd4-936e-d32157efaea7
 
 ## Table of Contents
 
