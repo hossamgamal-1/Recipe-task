@@ -5,35 +5,23 @@ import 'api_error_model.dart';
 part 'errors_data.dart';
 
 class ErrorHandler {
-  ApiErrorModel? apiErrorModel;
+  static ApiErrorModel handle(dynamic error) {
+    if (error is DioException) return _handleError(error);
 
-  ErrorHandler.handle(dynamic error) {
-    if (error is DioException) {
-      apiErrorModel = _handleError(error);
-      return;
-    }
-
-    if (error is String) {
-      apiErrorModel = ApiErrorModel(message: error);
-      return;
-    }
+    if (error is String) return ApiErrorModel(errorMessage: error);
 
     if (error is Exception) {
-      final errorMessage = error.toString().split(':').last;
-      apiErrorModel = ApiErrorModel(message: errorMessage);
-      return;
-    }
-    if (error is TypeError) {
-      apiErrorModel = DataSource.parsingError.getFailure();
-      return;
+      return ApiErrorModel(errorMessage: error.toString().split(':').last);
     }
 
-    apiErrorModel = DataSource.defaultError.getFailure();
+    if (error is TypeError) {
+      return DataSource.parsingError.getFailure();
+    }
+
+    return DataSource.defaultError.getFailure();
   }
 
-  String get errorMessage => apiErrorModel?.message ?? 'Unknown error';
-
-  ApiErrorModel _handleError(DioException error) {
+  static ApiErrorModel _handleError(DioException error) {
     switch (error.type) {
       case DioExceptionType.connectionTimeout:
       case DioExceptionType.sendTimeout:

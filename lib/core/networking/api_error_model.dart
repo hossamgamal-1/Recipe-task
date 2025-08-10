@@ -1,12 +1,12 @@
 class ApiErrorModel {
-  final String message;
+  final String errorMessage;
   final int? code;
 
-  const ApiErrorModel({this.message = 'Unknown Error', this.code});
+  const ApiErrorModel({this.errorMessage = 'Unknown Error', this.code});
 
   factory ApiErrorModel.fromJson(Map<String, dynamic> json) {
     return ApiErrorModel(
-      message: json['errorMessage'] as String? ?? 'Unknown Error',
+      errorMessage: json['errorMessage'] as String? ?? 'Unknown Error',
       code: json['code'],
     );
   }

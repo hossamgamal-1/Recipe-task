@@ -13,6 +13,8 @@ class AppRouter {
   const AppRouter._();
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
+    final arg = settings.arguments;
+
     final screen = switch (settings.name) {
       AppRoutes.home => MultiBlocProvider(
         providers: [
@@ -21,16 +23,11 @@ class AppRouter {
         ],
         child: const RecipesScreen(),
       ),
-      AppRoutes.recipeDetails => () {
-        final arg = settings.arguments;
-        if (arg is! int) {
-          return const Scaffold(body: Center(child: Text('Invalid recipe id')));
-        }
-        return BlocProvider(
-          create: (_) => RecipeDetailsCubit(getIt())..load(arg),
-          child: RecipeDetailsScreen(productId: arg),
-        );
-      }(),
+
+      AppRoutes.recipeDetails => BlocProvider(
+        create: (_) => RecipeDetailsCubit(getIt())..load(arg),
+        child: RecipeDetailsScreen(productId: arg as int),
+      ),
 
       _ => Scaffold(
         body: Center(child: Text('No route defined for ${settings.name}')),

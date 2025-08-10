@@ -33,21 +33,24 @@ dependencies:
   get_it: ^8.2.0
 
   # UI Components
-  equatable: ^2.0.5
   skeletonizer: ^1.4.3
   cupertino_icons: ^1.0.8
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner: ^2.4.11
+  flutter_lints: ^4.0.0
+  
+  # Automatically generate code for converting to and from JSON by annotating Dart classes.
   json_serializable: ^6.8.0
 
-  flutter_lints: ^4.0.0
+  # A build system for Dart code generation and modular compilation.
+  build_runner: ^2.4.11
+
+  # A Dart mock library which simplifies mocking for testing
   mocktail: ^1.0.3
 
 flutter:
-
   uses-material-design: true
 
   assets:

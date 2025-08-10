@@ -1,10 +1,7 @@
 part of 'recipe_details_cubit.dart';
 
-sealed class RecipeDetailsState extends Equatable {
+sealed class RecipeDetailsState {
   const RecipeDetailsState();
-
-  @override
-  List<Object?> get props => [];
 }
 
 class RecipeDetailsInitial extends RecipeDetailsState {
@@ -18,15 +15,9 @@ class RecipeDetailsLoading extends RecipeDetailsState {
 class RecipeDetailsLoaded extends RecipeDetailsState {
   final DetailedRecipeEntity details;
   const RecipeDetailsLoaded(this.details);
-
-  @override
-  List<Object?> get props => [details];
 }
 
 class RecipeDetailsError extends RecipeDetailsState {
   final String message;
   const RecipeDetailsError(this.message);
-
-  @override
-  List<Object?> get props => [message];
 }

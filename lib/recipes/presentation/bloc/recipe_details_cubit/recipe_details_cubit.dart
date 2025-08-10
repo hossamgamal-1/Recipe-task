@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:equatable/equatable.dart';
 
 import '../../../../core/networking/api_result.dart';
 import '../../../domain/entities/detailed_recipe_entity.dart';
