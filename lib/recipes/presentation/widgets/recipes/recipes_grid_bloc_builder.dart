@@ -13,6 +13,10 @@ class RecipesGridBlocBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<RecipesCubit, RecipesState>(
+      buildWhen: (_, current) {
+        if (current is RecipesLoading && current.isLoadMore) return false;
+        return true;
+      },
       builder: (context, state) {
         return SliverPadding(
           padding: EdgeInsets.symmetric(vertical: 16.h),

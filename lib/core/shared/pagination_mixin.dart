@@ -37,12 +37,13 @@ mixin PaginationMixin<T> {
     int pageSize = Constants.pageSize,
     bool refresh = false,
   }) async {
-    if (_isLoading) return FailureResult('Already loading');
+    if (_isLoading) return SuccessResult(_items);
 
     if (refresh) reset();
 
     if (!_hasMore && _items.isNotEmpty) return SuccessResult(_items);
 
+    // Prevents the app from loading the list infinitely. current API is mocked and returns the same result
     if (items.length >= _page * pageSize) return SuccessResult(_items);
 
     _isLoading = true;

@@ -11,18 +11,22 @@ class RecipesCubit extends Cubit<RecipesState> {
   RecipesCubit(this._getRecipes) : super(const RecipesInitial());
 
   Future<void> load({bool refresh = false}) async {
-    emit(RecipesLoading(isLoadMore: _getRecipes.items.isNotEmpty && !refresh));
+    if (!refresh) {
+      // Prevent duplicate requests and
+      if (_getRecipes.isLoading) return;
+
+      // stop when no more pages
+      if (!_getRecipes.hasMore && _getRecipes.items.isNotEmpty) return;
+    }
+
+    emit(RecipesLoading(isLoadMore: !refresh && _getRecipes.items.isNotEmpty));
 
     final response = await _getRecipes.loadNext(refresh: refresh);
 
     switch (response) {
-      case SuccessResult<List<RecipeEntity>>():
+      case SuccessResult():
         emit(
-          RecipesLoaded(
-            recipes: response.data,
-            pageNumber: _getRecipes.lastLoadedPage,
-            hasMore: _getRecipes.hasMore,
-          ),
+          RecipesLoaded(recipes: response.data, hasMore: _getRecipes.hasMore),
         );
       case FailureResult():
         emit(RecipesError(response.errorMessage));

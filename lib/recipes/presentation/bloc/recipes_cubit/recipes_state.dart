@@ -15,13 +15,8 @@ class RecipesLoading extends RecipesState {
 
 class RecipesLoaded extends RecipesState {
   final bool hasMore;
-  final int pageNumber;
   final List<RecipeEntity> recipes;
-  const RecipesLoaded({
-    required this.hasMore,
-    required this.recipes,
-    required this.pageNumber,
-  });
+  const RecipesLoaded({required this.hasMore, required this.recipes});
 }
 
 class RecipesError extends RecipesState {

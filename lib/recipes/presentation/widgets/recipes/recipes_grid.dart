@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/theming/app_sizer.dart';
 import '../../../../core/widgets/app_shimmer.dart';
 import '../../../domain/entities/recipe_entity.dart';
+import '../../bloc/recipes_cubit/recipes_cubit.dart';
 import 'recipe_card.dart';
 
 class RecipesGrid extends StatelessWidget {
@@ -18,13 +20,18 @@ class RecipesGrid extends StatelessWidget {
     return SliverPadding(
       padding: EdgeInsets.symmetric(horizontal: 8.w),
       sliver: SliverGrid(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          crossAxisSpacing: 12,
-          mainAxisSpacing: 12,
+          crossAxisSpacing: 12.w,
+          mainAxisSpacing: 12.h,
           childAspectRatio: 0.64,
         ),
         delegate: SliverChildBuilderDelegate((_, index) {
+          if (index == recipes.length - 1 && !isLoading) {
+            // Load more recipes when reaching the end of the list
+            context.read<RecipesCubit>().load();
+          }
+
           return AppShimmer(
             enabled: isLoading,
             child: RecipeCard(recipes[index], key: ValueKey(recipes[index].id)),
