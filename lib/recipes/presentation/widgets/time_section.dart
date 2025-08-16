@@ -7,13 +7,11 @@ import '../../../core/widgets/app_text.dart';
 
 class TimeSection extends StatelessWidget {
   final int minutes;
-  final int id;
-  final Color? backgroundColor;
+  final Color backgroundColor;
   const TimeSection({
     super.key,
     required this.minutes,
-    required this.id,
-    this.backgroundColor,
+    this.backgroundColor = AppColors.white,
   });
 
   @override
@@ -25,7 +23,7 @@ class TimeSection extends StatelessWidget {
       width: 90.w,
       padding: EdgeInsets.symmetric(vertical: 4.h),
       decoration: BoxDecoration(
-        color: backgroundColor ?? AppColors.white,
+        color: backgroundColor,
         borderRadius: BorderRadius.circular(8),
       ),
       child: Center(

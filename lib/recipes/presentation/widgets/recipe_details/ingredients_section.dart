@@ -18,7 +18,7 @@ class IngredientsSection extends StatelessWidget {
       children: [
         // Ingredients list
         for (int i = 0; i < ingredients.length; i++) ...[
-          IngredientCard(ingredient: ingredients[i]),
+          IngredientCard(product: ingredients[i].product),
           Container(
             height: 1.h,
             margin: EdgeInsets.symmetric(vertical: 6.h),
@@ -56,16 +56,5 @@ class _SaveToListTile extends StatelessWidget {
         ],
       ),
     );
-  }
-}
-
-class AddIngredientsToCartTile extends StatelessWidget {
-  final int count;
-  const AddIngredientsToCartTile({super.key, required this.count});
-
-  @override
-  Widget build(BuildContext context) {
-    // Moved to its own file to be reusable at screen level
-    throw UnimplementedError('Use add_ingredients_to_cart_tile.dart');
   }
 }

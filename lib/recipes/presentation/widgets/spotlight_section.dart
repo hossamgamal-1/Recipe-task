@@ -7,12 +7,7 @@ import '../../../core/widgets/app_text.dart';
 
 class SpotlightSection extends StatelessWidget {
   final bool isFeatured;
-  final int id;
-  const SpotlightSection({
-    super.key,
-    required this.isFeatured,
-    required this.id,
-  });
+  const SpotlightSection({super.key, required this.isFeatured});
 
   @override
   Widget build(BuildContext context) {

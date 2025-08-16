@@ -1,13 +1,9 @@
-## Recipe Task (Flutter)
+<h1 align="center">Recipe Task (Flutter)</h1>
 
 A simple, cleanly-structured Flutter app that lists recipes, shows categories, and displays detailed info for a selected recipe. Built with BLoC (Cubit), Dio, GetIt, and JSON code generation.
 
-### Project structure
 <p align="center"><img src="assets/images/logo.jpg" alt="Rabbit Recipes" width="240"></p>
 
-<h1 align="center">Recipe Task (Flutter)</h1>
-
-<p align="center">A clean Flutter app that lists recipes, categories, and details — built with BLoC (Cubit), Dio, GetIt, and JSON codegen.</p>
 
 ## 🎥 Video [Watch Demo Video]
 

@@ -1,12 +1,9 @@
+import 'dart:io';
+
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 import '../models/api_response.dart';
 import 'api_error_handler.dart';
-
-// Allow tests to override how connectivity is checked without altering call sites.
-typedef ConnectionCheck = Future<bool> Function();
-ConnectionCheck connectionCheck =
-    () => InternetConnectionChecker().hasConnection;
 
 sealed class ApiResult<T> {
   /// Handles API calls Exceptions and maps the result.
@@ -15,7 +12,7 @@ sealed class ApiResult<T> {
     L Function(T) onSuccess,
   ) async {
     try {
-      if (!(await connectionCheck())) {
+      if (!(await _connectionCheck())) {
         return FailureResult('No Internet Connection');
       }
 
@@ -29,6 +26,13 @@ sealed class ApiResult<T> {
     } catch (e) {
       return FailureResult(e);
     }
+  }
+
+  static Future<bool> _connectionCheck() async {
+    final isTest = Platform.environment.containsKey('FLUTTER_TEST');
+    if (isTest) return true;
+
+    return await InternetConnectionChecker().hasConnection;
   }
 }
 

@@ -20,8 +20,6 @@ void main() {
   late RecipesRepositoryImpl repo;
 
   setUp(() {
-    // Force network as connected to avoid relying on real connectivity.
-    connectionCheck = () async => true;
     remote = _MockRemote();
     repo = RecipesRepositoryImpl(remote);
   });

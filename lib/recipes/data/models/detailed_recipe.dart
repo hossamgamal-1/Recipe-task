@@ -34,7 +34,6 @@ class DetailedRecipe extends Recipe {
 
 @JsonSerializable()
 class Ingredient {
-  @JsonKey(name: 'quantity')
   final int? quantity;
   final bool isFeatured;
   final Product product;
@@ -48,19 +47,19 @@ class Ingredient {
 
 @JsonSerializable()
 class Product {
-  final num id;
-  final num basePrice;
-  final num priceBeforeTax;
+  final int id;
   final num vat;
   final num vatCost;
-  final num priceBeforeBulkDiscount;
   final num? weight;
-  final String? imageUrl;
-  final bool inStock;
-  final int replenishmentTime;
   final String unit;
-  final String unitValue;
   final String name;
+  final bool inStock;
+  final num basePrice;
+  final String unitValue;
+  final String? imageUrl;
+  final num priceBeforeTax;
+  final int replenishmentTime;
+  final num priceBeforeBulkDiscount;
   const Product(
     this.id,
     this.basePrice,

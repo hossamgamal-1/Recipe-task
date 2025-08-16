@@ -31,7 +31,7 @@ class RecipeDetailsSkeletonContent extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SpotlightSection(isFeatured: item.isFeatured, id: item.id),
+                  SpotlightSection(isFeatured: item.isFeatured),
                   SizedBox(height: 8.h),
                   AppText(
                     item.name,
@@ -50,7 +50,6 @@ class RecipeDetailsSkeletonContent extends StatelessWidget {
                       ),
                       TimeSection(
                         minutes: item.timeMinutes,
-                        id: item.id,
                         backgroundColor: AppColors.gray,
                       ),
                     ],
