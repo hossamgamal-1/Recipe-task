@@ -11,14 +11,6 @@ class RecipesCubit extends Cubit<RecipesState> {
   RecipesCubit(this._getRecipes) : super(const RecipesInitial());
 
   Future<void> load({bool refresh = false}) async {
-    if (!refresh) {
-      // Prevent duplicate requests and
-      if (_getRecipes.isLoading) return;
-
-      // stop when no more pages
-      if (!_getRecipes.hasMore && _getRecipes.items.isNotEmpty) return;
-    }
-
     emit(RecipesLoading(isLoadMore: !refresh && _getRecipes.items.isNotEmpty));
 
     final response = await _getRecipes.loadNext(refresh: refresh);
