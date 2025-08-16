@@ -36,8 +36,8 @@ class _RecipeDetailsAppBarState extends State<RecipeDetailsAppBar> {
   void _handleScroll() {
     if (!widget.scrollController.hasClients) return;
 
+    final threshold = expandedHeight - MediaQuery.paddingOf(context).top;
     // a bit before fully collapsed
-    final threshold = expandedHeight - MediaQuery.of(context).padding.top;
     final shouldCollapse = widget.scrollController.offset > threshold - 30.w;
     final shouldHalfCollapse = widget.scrollController.offset > threshold / 2;
 

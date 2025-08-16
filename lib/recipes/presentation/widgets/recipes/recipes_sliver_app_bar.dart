@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/app_sizer.dart';
+import '../../../../core/utils/constants.dart';
 import 'categories_section.dart';
 import 'recipes_app_bar_title.dart';
 
@@ -12,7 +13,7 @@ class RecipesSliverAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       pinned: true,
-      expandedHeight: 140.h,
+      expandedHeight: Constants.recipesAppBarHeight,
       scrolledUnderElevation: 0,
       backgroundColor: AppColors.paleGreen,
       flexibleSpace: Padding(

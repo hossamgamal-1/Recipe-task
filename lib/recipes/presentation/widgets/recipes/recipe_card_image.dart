@@ -30,12 +30,12 @@ class RecipeCardImage extends StatelessWidget {
         Positioned(
           top: 5,
           left: 5,
-          child: SpotlightSection(isFeatured: recipe.isFeatured, id: recipe.id),
+          child: SpotlightSection(isFeatured: recipe.isFeatured),
         ),
         Positioned(
           bottom: 5,
           left: 5,
-          child: TimeSection(minutes: recipe.timeMinutes, id: recipe.id),
+          child: TimeSection(minutes: recipe.timeMinutes),
         ),
       ],
     );

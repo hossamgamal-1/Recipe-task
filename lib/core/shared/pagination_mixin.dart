@@ -13,17 +13,16 @@ mixin PaginationMixin<T> {
   bool _isLoading = false;
   final _items = <T>[];
 
+  bool get hasMore => _hasMore;
+
   /// The last page that was successfully loaded. 0 when no data is loaded yet.
   int get lastLoadedPage => _items.isEmpty ? 0 : _page - 1;
-
-  bool get hasMore => _hasMore;
-  bool get isLoading => _isLoading;
 
   /// The full list of paginated items loaded so far (unmodifiable to prevent external modification).
   List<T> get items => List.unmodifiable(_items);
 
   /// Reset internal pagination state.
-  void reset() {
+  void _reset() {
     _page = 1;
     _hasMore = true;
     _isLoading = false;
@@ -34,18 +33,14 @@ mixin PaginationMixin<T> {
     int pageSize = Constants.pageSize,
     bool refresh = false,
   }) async {
-    if (_isLoading) return SuccessResult(List.unmodifiable(_items));
+    if (_isLoading) return SuccessResult(items);
 
-    if (refresh) reset();
+    if (refresh) _reset();
 
-    if (!_hasMore && _items.isNotEmpty) {
-      return SuccessResult(List.unmodifiable(_items));
-    }
+    if (!_hasMore && _items.isNotEmpty) return SuccessResult(items);
 
     // Prevents the app from loading the list infinitely. current API is mocked and returns the same result
-    if (items.length >= _page * pageSize) {
-      return SuccessResult(List.unmodifiable(_items));
-    }
+    if (items.length >= _page * pageSize) return SuccessResult(items);
 
     _isLoading = true;
     final result = await call(
@@ -59,7 +54,7 @@ mixin PaginationMixin<T> {
         _hasMore = result.data.hasMore;
         _page = result.data.pageNumber + 1;
 
-        return SuccessResult(List.unmodifiable(_items));
+        return SuccessResult(items);
 
       case FailureResult():
         return FailureResult(result.errorMessage);

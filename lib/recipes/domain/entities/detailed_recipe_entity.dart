@@ -90,6 +90,8 @@ class ProductEntity {
     required this.unitValue,
     required this.name,
   });
+
+  String get label => '1 x $unitValue $unit';
 }
 
 class StepEntity {

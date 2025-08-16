@@ -53,7 +53,7 @@ Map<String, dynamic> _$IngredientToJson(Ingredient instance) =>
     };
 
 Product _$ProductFromJson(Map<String, dynamic> json) => Product(
-  json['id'] as num,
+  (json['id'] as num).toInt(),
   json['basePrice'] as num,
   json['priceBeforeTax'] as num,
   json['vat'] as num,
@@ -70,18 +70,18 @@ Product _$ProductFromJson(Map<String, dynamic> json) => Product(
 
 Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
   'id': instance.id,
-  'basePrice': instance.basePrice,
-  'priceBeforeTax': instance.priceBeforeTax,
   'vat': instance.vat,
   'vatCost': instance.vatCost,
-  'priceBeforeBulkDiscount': instance.priceBeforeBulkDiscount,
   'weight': instance.weight,
-  'imageUrl': instance.imageUrl,
-  'inStock': instance.inStock,
-  'replenishmentTime': instance.replenishmentTime,
   'unit': instance.unit,
-  'unitValue': instance.unitValue,
   'name': instance.name,
+  'inStock': instance.inStock,
+  'basePrice': instance.basePrice,
+  'unitValue': instance.unitValue,
+  'imageUrl': instance.imageUrl,
+  'priceBeforeTax': instance.priceBeforeTax,
+  'replenishmentTime': instance.replenishmentTime,
+  'priceBeforeBulkDiscount': instance.priceBeforeBulkDiscount,
 };
 
 Step _$StepFromJson(Map<String, dynamic> json) => Step(
